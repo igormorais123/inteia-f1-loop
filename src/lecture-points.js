@@ -5,28 +5,28 @@ export const LECTURE_POINTS={
     "Transforme qualidade em critérios."
   ],
   "hipotese": [
-    "Separe partes independentes.",
-    "Dê uma entrega a cada agente.",
-    "Use os mesmos critérios no conjunto."
+    "Abra frentes por tema.",
+    "Dê um agente e um loop a cada frente.",
+    "Integre e teste o conjunto."
   ],
   "executar": [
     "Produza uma versão visível.",
-    "Receba uma crítica específica.",
-    "Revise e teste novamente."
+    "Defina ciclos, tempo e orçamento.",
+    "Acompanhe cada frente no painel."
   ],
   "avaliar": [
-    "Separe produtor e crítico.",
-    "Mostre referência e resultado.",
+    "Use outro modelo como crítico.",
+    "Exija rigor, não aprovação.",
     "Exija falha, evidência e correção."
   ],
   "corrigir": [
-    "Ataque a falha apontada.",
+    "Corrija a maior falha primeiro.",
     "Preserve o que já funciona.",
     "Reavalie a versão integrada."
   ],
   "encerrar": [
     "Coloque as versões lado a lado.",
     "Oculte a autoria quando possível.",
-    "Aceite o ganho ou abra outra volta."
+    "Sem ganho ou sem saldo: pare."
   ]
 };

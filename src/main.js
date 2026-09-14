@@ -86,7 +86,7 @@ function frame(now){
  paint();
  if(state.reading||!scene)return;
  const monitor=monitorState();document.body.classList.toggle('monitor-focused',monitor.active&&monitor.weight>.98);
- const label=`${monitor.beat+1} / 3 · ${['Observação','Comparação','Conclusão'][monitor.beat]}`;
+ const label=`${monitor.beat+1} / 3 · ${['Frentes','Platô','Limites'][monitor.beat]}`;
  if($('#monitor-page').textContent!==label)$('#monitor-page').textContent=label;
  const nextLabel=monitor.beat===2?'Seguir para o motor →':'Próxima →';if($('[data-monitor-next]').textContent!==nextLabel)$('[data-monitor-next]').textContent=nextLabel;
  pose=narrativePose(shownP);

@@ -669,31 +669,35 @@ export function createGarage({renderer, scene, mobile = false} = {}) {
   // The camera's existing push-in becomes a short lesson. Textures only upload
   // when a scroll beat changes; reversing the scroll restores the earlier card.
   function drawCaseScreen(screen, lessonBeat) {
-    const {ctx, canvas, texture} = screen;
-    const W = canvas.width, H = canvas.height, s = W / 1024;
-    paintScreenBase(ctx, W, H);
-    const m = 52 * s;
-    const cards = [
-      {title:'O QUE O TESTE MOSTROU', lines:['12 → 9 min'], detail:['Mediana de atendimento', '50 pedidos em cada versão'], source:'REGISTRO · FRASE 2'},
-      {title:'O QUE MUDOU JUNTO', lines:['FORMULÁRIO', '+ EQUIPE'], detail:['Duas mudanças juntas.'], source:'REGISTRO · FRASE 3'},
-      {title:'SÍNTESE DO TESTE', lines:['REDUÇÃO OBSERVADA', '12 → 9 MIN'], detail:['Formulário + equipe'], source:'REGISTRO · FRASES 2 E 3'},
-    ];
-    const card = cards[lessonBeat];
-    ctx.textAlign='left';ctx.textBaseline='alphabetic';
-    ctx.fillStyle='#8ea6b4';ctx.font=`600 ${38*s}px ${BODY}`;
-    ctx.fillText(card.title,m,78*s);
-    ctx.fillStyle='#ffd447';ctx.font=`${(lessonBeat===0?174:lessonBeat===1?108:86)*s}px ${DISPLAY}`;
-    card.lines.forEach((line,i)=>ctx.fillText(line,m,(lessonBeat===0?292:244+i*102)*s));
-    ctx.fillStyle='#eef3f6';ctx.font=`${48*s}px ${BODY}`;
-    card.detail.forEach((line,i)=>ctx.fillText(line,m,(410+i*48)*s));
-    ctx.fillStyle='#8ea6b4';ctx.font=`${30*s}px ${BODY}`;
-    ctx.fillText(card.source,m,540*s);
-    for(let i=0;i<3;i++){
-      ctx.fillStyle=i===lessonBeat?'#ffd447':'#34414a';
-      ctx.fillRect(W-m-(3-i)*52*s,526*s,38*s,8*s);
+    const {ctx,canvas,texture}=screen,W=canvas.width,H=canvas.height,s=W/1024;
+    paintScreenBase(ctx,W,H);
+    ctx.save();ctx.scale(s,s);ctx.textAlign='left';ctx.textBaseline='alphabetic';
+    const text=(value,x,y,size=36,color='#eef3f6')=>{ctx.fillStyle=color;ctx.font=size+'px '+BODY;ctx.fillText(value,x,y);};
+    const titles=['LOOPS EM MÚLTIPLAS FRENTES','MAIS RODADAS, MENOS GANHO','LIMITE A EQUIPE INTEIRA'];
+    text(titles[lessonBeat],52,65,38,'#ffd447');
+    if(lessonBeat===0){
+      text('FRENTE',52,139,30,'#a9bbc6');text('RODADA',450,139,30,'#a9bbc6');text('ESTADO',690,139,30,'#a9bbc6');
+      [['Conteúdo','2','Revisando'],['Visual','1','Em crítica'],['Funcional','1','Verificando']].forEach((r,i)=>{const y=210+i*83;text(r[0],52,y,43);text(r[1],450,y,40);text(r[2],690,y,36);ctx.fillStyle='#40515e';ctx.fillRect(52,y+22,910,1);});
+      text('Equipe: 4/8 ciclos · 06:20/12:00 · R$ 8/20',52,465,33,'#ffd447');
+      text('PAINEL ILUSTRATIVO · NÃO É EXECUÇÃO REAL',52,545,26,'#a9bbc6');
+    }else if(lessonBeat===1){
+      text('Qualidade pelo mesmo critério',110,123,31,'#c8d5dc');
+      const values=[40,62,78,86,89,90,90],x=i=>140+i*124,y=v=>415-v*2.6;
+      ctx.strokeStyle='#5c7080';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(140,145);ctx.lineTo(140,415);ctx.lineTo(904,415);ctx.stroke();
+      for(const v of [0,50,100]){text(String(v),64,y(v)+10,28,'#a9bbc6');ctx.strokeStyle='#ffffff20';ctx.beginPath();ctx.moveTo(140,y(v));ctx.lineTo(904,y(v));ctx.stroke();}
+      ctx.fillStyle='#ffd44714';ctx.fillRect(x(4)-35,150,300,264);
+      ctx.strokeStyle='#ffd447';ctx.lineWidth=6;ctx.beginPath();values.forEach((v,i)=>i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v)));ctx.stroke();
+      values.forEach((v,i)=>{ctx.fillStyle='#ffd447';ctx.beginPath();ctx.arc(x(i),y(v),6,0,Math.PI*2);ctx.fill();text(String(i+1),x(i)-8,448,28,'#c8d5dc');});
+      text('PLATÔ',720,275,38,'#ffd447');text('Ganho: +1 → 0',672,326,30);text('Iterações',450,492,31,'#c8d5dc');
+      text('CURVA ILUSTRATIVA · CUSTO CONTINUA SUBINDO',52,545,26,'#a9bbc6');
+    }else{
+      text('Pare no primeiro limite atingido.',52,141,42);
+      [['8','CICLOS'],['12','MINUTOS'],['R$ 20','TOTAL']].forEach((r,i)=>{let x=52+i*315;text(r[0],x,280,72,'#ffd447');text(r[1],x,331,30,'#c8d5dc');});
+      text('Conte produtores + críticos + ferramentas.',52,425,36);
+      text('Sem ganho? Pause e mude a hipótese.',52,481,36);
+      text('LIMITES FICTÍCIOS · DEFINA OS SEUS ANTES',52,545,26,'#a9bbc6');
     }
-    screen.title=card.title;
-    texture.needsUpdate = true;
+    ctx.restore();screen.title=titles[lessonBeat];texture.needsUpdate=true;
   }
 
   // Direita: o registro do aluno quando existe; sem registro, a consequência do critério no caso.
