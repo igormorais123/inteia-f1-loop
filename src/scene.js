@@ -235,7 +235,10 @@ export async function createScene(stage, {onProgress, onError, signal}) {
 
   // Monitor reading shot state (camera r6): weight and reading arrive straight from the scroll, so they are damped.
   const shot = {weight: 0, reading: 0, lens: null};
+  let departureTime=0;
   function apply(dt, time) {
+    // Keep the circuit running after the last scroll pixel; replay resets the departure.
+    departureTime=pose.finale?.race>=.9999?departureTime+Math.min(dt,.1):0;
     const t = pose.tunnel, d = pose.debrief, e = pose.exposure, v = pose.evaluate;
     const p = pose.index + pose.local;
     // Chapter 07 (engine/engine-shot.js): one take from the closing frame into the running engine.
@@ -265,6 +268,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
       target.lerp(engineAim.fromArray(engineTake.target),engineZoom);
       camera.position.lerp(engineAim.fromArray(engineTake.camera),engineZoom);
     }
+    if(departureTime>0)camera.position.z-=60*(1-Math.exp(-departureTime/10));
     // Handheld breathing and pointer parallax stay small so the take remains legible.
     const follow = 1 - Math.exp(-dt * 3);
     pointer.sx += (pointer.x - pointer.sx) * follow; pointer.sy += (pointer.y - pointer.sy) * follow;
@@ -296,11 +300,12 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     inCarEngine.update(dt,engineTake,pose.enginePaused);
     // The circuit integrates its own roll; the wheels follow it (after mechanics rewrote the spin).
     if (r > 0 || run > 0) {
-      if(pose.finale){track.motion.travel=pose.finale.distance;track.motion.wheelAngle=pose.finale.distance/.33;}
+      if(pose.finale){track.motion.travel=pose.finale.distance+departureTime*28;track.motion.wheelAngle=track.motion.travel/.33;}
       const motion = track.update(time, pose.finale?0:dt, run);
       if (run > 0) for (const w of mechanics.wheels) w.spinPivot.rotation.x = motion.wheelAngle;
     }
     finishLine.update(pose.finale);
+    if(departureTime>0)finishLine.root.position.z-=departureTime*28;
     wheelBlur.update(run);
     sparks.update(time, run * r);
     // Arrival at the box (the track is the outgoing world): the discs glow while speed falls and the

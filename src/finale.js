@@ -3,12 +3,12 @@ const smooth=x=>{x=clamp(x);return x*x*(3-2*x);};
 export const FINALE_SECONDS=14;
 export function finalePose(local){
  const blend=smooth((local-.34)/.18),sweep=smooth((local-.38)/.14);
- const race=clamp((local-.52)/.48),distance=100*smooth(race);
- const angle=.45+1.9*smooth(race),radius=8.8;
+ const race=clamp((local-.52)/.48),distance=130*race*race;
+ const rear=smooth(race/.42),depart=smooth((race-.58)/.42);
  return {blend,sweep,race,distance,crossed:distance>82.6,
-  camera:[Math.cos(angle)*radius,2.7+1.3*smooth(race),Math.sin(angle)*radius],
+  camera:[7*(1-rear),2.7+.8*rear,-5-4*rear-27*depart],
   target:[0,.5,0],lineZ:80-distance,
-  speed:race>0&&race<1?.65:0};
+  speed:race>0?.55+.45*race:0};
 }
 
 export function createFinishLine(THREE,track){
