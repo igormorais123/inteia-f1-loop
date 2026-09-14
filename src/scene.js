@@ -238,7 +238,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     const p = pose.index + pose.local;
     // Chapter 07 (engine/engine-shot.js): one take from the closing frame into the running engine.
     const engineTake=pose.engineChapter?engineShot(pose.engineProgress||0,mobile):null,engineZoom=engineTake?engineTake.weight:0;
-    if(pose.engineChapter||p>4.97)inCarEngine.prepare();
+    if(pose.engineChapter||p>3.3)inCarEngine.prepare();
     // Portrait framing is a pure function of the pose (story.js portraitFrame, shared with the tests):
     // lifted above the copy while it reads, car centred and ≈58% of the width when there is none,
     // the wide reverse shot inside the box at 1.68–1.97 and the lesson screen centred at 3.52–3.92.
@@ -465,3 +465,4 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     dispose() { inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
   };
 }
+

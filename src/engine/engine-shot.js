@@ -76,7 +76,7 @@ export function engineShot(progress,mobile=false){
  // bay (the turbo) does not push the block out of the narrow frame.
  if(mobile){const aim=target.map((v,i)=>v+(MOBILE_AIM[i]-v)*.4);camera=camera.map((v,i)=>aim[i]+(v-target[i])*1.6);target=aim;fov+=9;}
  return {
-  weight:smooth(p/.12),
+  weight:smooth(p/.12)*(1-smooth((p-.94)/.06)),
   camera,target,fov,
   focus:eased(FOCUS,p),range:eased(RANGE,p),bokeh:eased(BOKEH,p),
   // The engine cover rises with the first move and settles back while the camera leaves.
