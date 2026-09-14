@@ -92,6 +92,7 @@ function frame(now){
  pose=narrativePose(shownP);
  document.body.classList.toggle('finale-running',!!pose.finale&&pose.finale.blend>.05);
  document.body.classList.toggle('finale-crossed',!!pose.finale?.crossed);
+ document.body.classList.toggle('credits-active',!!pose.finale&&pose.finale.race>.995);
  $('#finish-status').textContent=pose.finale?.crossed?'Linha de chegada cruzada':pose.finale?.race>0?'Reta final':'';
  const engineLocal=pose.engineProgress;pose.enginePaused=enginePaused;
  document.body.classList.toggle('in-engine-chapter',pose.engineChapter);
@@ -170,3 +171,5 @@ setReading(state.reading);measure();paint();
 window.addEventListener('engine:closed',()=>{lastTime=performance.now();snap=true;schedule();});
 const inspectEngineButton=document.getElementById('inspect-engine');
 inspectEngineButton?.addEventListener('click',()=>{document.getElementById('motor-do-loop')?.scrollIntoView({behavior:reduced.matches?'auto':'smooth'});});
+
+$('#credits-pause').onclick=()=>{const paused=$('#film-credits').classList.toggle('paused');$('#credits-pause').setAttribute('aria-pressed',String(paused));$('#credits-pause').textContent=paused?'Continuar créditos':'Pausar créditos';};

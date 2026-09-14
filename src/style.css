@@ -141,3 +141,14 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
  .enhanced dialog p,.enhanced dialog label,.enhanced dialog textarea,.enhanced dialog select,.enhanced dialog summary,.enhanced dialog button,.enhanced dialog legend,.enhanced dialog .small,.enhanced #storage-state,.enhanced dialog .lr-lab,.enhanced dialog .lr-lab li,.enhanced dialog .lr-lab label,.enhanced dialog .lr-lab summary{font-size:18px}
  .chapters-nav{gap:12px}.chapters-nav span{font-size:13px}#scene-label,.footer-title{font-size:12px}
 }
+/* End credits leave the centre of the circuit and its vanishing point visible. */
+#film-credits{display:none}
+.enhanced:not(.reading).credits-active #film-credits{display:block;position:fixed;z-index:9;right:3vw;top:14svh;width:40vw;height:72svh;text-align:center;background:linear-gradient(90deg,transparent,#080d12b8 20%,#080d12c9 85%,transparent)}
+.credits-window{height:calc(100% - 55px);overflow:hidden;mask-image:linear-gradient(transparent,#000 8%,#000 90%,transparent)}
+.credits-roll{padding-top:60svh;animation:film-roll 52s linear infinite;will-change:transform}
+.credit{padding:0 20px;margin:0 0 70px}.credit p{font-size:20px;line-height:1.4;color:#d7dfe3;margin:0 0 15px}.credit h3{font-size:clamp(27px,2.7vw,40px);font-weight:600;line-height:1.2;margin:0 0 14px}.credit h2{font-size:clamp(40px,4vw,64px)!important;line-height:1.04}.credit-brand{font-style:italic;font-weight:800!important;letter-spacing:2px}.credit-brand span{color:#ffd447}
+#credits-pause{font-size:16px;padding:12px;border-bottom:1px solid #ffffff66;background:#0b101499}
+.paused .credits-roll{animation-play-state:paused}
+@keyframes film-roll{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+@media(max-width:760px){.enhanced:not(.reading).credits-active #film-credits{right:2vw;width:61vw;top:13svh;height:60svh}.credit{padding:0 8px;margin-bottom:55px}.credit p{font-size:17px}.credit h3{font-size:25px}.credit h2{font-size:36px!important}.credits-roll{padding-top:50svh}#credits-pause{font-size:15px}.credits-active #finish-caption{max-width:90%;font-size:18px!important}}
+@media(prefers-reduced-motion:reduce){.credits-roll{animation:none;padding-top:10px}.credits-window{overflow:auto;mask-image:none}#credits-pause{display:none}}
