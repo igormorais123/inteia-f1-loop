@@ -100,3 +100,13 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
 /* Keyboard: focused copy and monitor controls are always visible (technical judge r5, M4); noscript note clears the phone nav (m6). */
 .enhanced:not(.reading) .chapter:focus-within .copy{opacity:1;pointer-events:auto}.enhanced:not(.reading) .chapter:focus-within .copy>*{opacity:1}.enhanced:not(.reading) .monitor-scene-controls:focus-within{opacity:1;pointer-events:auto}
 @media(max-width:760px){.noscript{bottom:130px}}
+/* Final reading, then a clear track take with a visible finish. */
+.enhanced:not(.reading) #encerrar{min-height:620svh}
+#finish-caption{display:none}
+.enhanced:not(.reading).finale-running #encerrar .copy{opacity:0!important;pointer-events:none}
+.enhanced:not(.reading).finale-running .shade{opacity:.12}
+.enhanced:not(.reading).finale-running .chapters-nav{opacity:0;pointer-events:none}
+.enhanced:not(.reading).finale-running #finish-caption{display:block;position:fixed;z-index:8;bottom:84px;left:6%;font-size:14px;letter-spacing:1px}
+#finish-caption a{display:none}.finale-crossed #finish-caption a{display:inline-block}
+.enhanced:not(.reading).engine-returning .engine-chapter-copy{opacity:0;pointer-events:none}
+.reading #finish-caption{display:none}

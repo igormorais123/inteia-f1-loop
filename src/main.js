@@ -1,4 +1,5 @@
-import {CHAPTER_IDS,narrativePose} from './narrative.js';
+import {FINALE_SECONDS} from './finale.js';
+import {CHAPTER_IDS,narrativePose,engineScroll} from './narrative.js';
 import {ENGINE_INTRO,ENGINE_LESSONS,engineBeat} from './engine/chapter.js';
 import {monitorTimeline} from './monitor-scene.js';
 import {mountLearning} from './learning/index.js';
@@ -16,6 +17,8 @@ const state={values:{},answers:{},chapter:-1,reading:reduced.matches};
 const SCENE_LABELS=['BOX','BANCADA','TÚNEL DE VENTO','ESTAÇÃO DE DADOS','MOTOR DO LOOP','BOX','DEBRIEF'];
 const HOTSPOTS=['DEFINIR O CRITÉRIO','TESTAR UMA MUDANÇA','GUARDAR O PEDIDO','CONFERIR NA FONTE','CORRIGIR O QUE FALHOU','REGISTRAR A DECISÃO'];
 let frameId=null,loading=null,loadAbort=null,scene=null,positions=[],activeDialog=null,opener=null,currentLesson=0;
+let finalePlayback=null,cameraTravel=null;
+function travelTo(top,duration=2400){if(reduced.matches){window.scrollTo(0,top);snap=true;}else cameraTravel={from:scrollY,to:top,start:performance.now(),duration};schedule();}
 let targetP=0,shownP=0,lastTime=performance.now(),lastInput=0,snap=true,pose=sampleStory(0);
 try{const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');for(const [key] of FIELDS)if(typeof saved[key]==='string')state.values[key]=saved[key].slice(0,10000);if(['','aceitar','reverter','revisar','inconclusivo','decisao-necessaria'].includes(saved.decision))state.values.decision=saved.decision;}catch{/* Empty notebook is usable even when browser storage is unavailable. */}
 function save(){scene?.setNotebook(state.values,FIELDS);try{localStorage.setItem(storageKey,JSON.stringify(state.values));$('#storage-state').textContent='As anotações ficam somente neste navegador.';return true;}catch{$('#storage-state').textContent='Este navegador não permitiu salvar. Baixe uma cópia para preservar suas anotações.';if(activeDialog?.id==='lesson-dialog')$('#feedback').textContent='Não foi possível salvar neste navegador. A nota continua nesta sessão: abra Meu registro e baixe uma cópia antes de sair.';return false;}}
@@ -34,7 +37,7 @@ function monitorState(){const el=$('#analise-no-box');return monitorTimeline(scr
 function progress(){const y=window.scrollY;let i=0;while(i<positions.length-1&&y>=positions[i+1])i++;
  if(!state.reading&&i===3){const top=$('#analise-no-box').offsetTop;return y<top?3+.64*Math.max(0,(y-positions[3])/(top-positions[3])):monitorState().story;}
  return i===6?6+Math.min(1,Math.max(0,(y-positions[6])/Math.max(1,$('#encerrar').offsetHeight-innerHeight))):i+Math.max(0,Math.min(1,(y-positions[i])/(positions[i+1]-positions[i])));}
-function goMonitor(beat){const el=$('#analise-no-box');if(beat>2){$('#motor-do-loop').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});return;}if(beat<0){$('#avaliar').scrollIntoView();return;}const m=monitorState();window.scrollTo({top:el.offsetTop+el.offsetHeight*(m.enter+(beat+.5)/3*(m.exit-m.enter)),behavior:'instant'});snap=true;schedule();}
+function goMonitor(beat){const el=$('#analise-no-box');if(beat>2){travelTo($('#motor-do-loop').offsetTop,3500);return;}if(beat<0){$('#avaliar').scrollIntoView();return;}const m=monitorState();window.scrollTo({top:el.offsetTop+el.offsetHeight*(m.enter+(beat+.5)/3*(m.exit-m.enter)),behavior:'instant'});snap=true;schedule();}
 $('[data-monitor-prev]').onclick=()=>goMonitor(monitorState().beat-1);
 $('[data-monitor-next]').onclick=()=>goMonitor(monitorState().beat+1);
 // Copy reads during the drift and dissolves before the camera travels (R7).
@@ -57,7 +60,7 @@ function paint(){
  if(!state.reading)paintCopy();
 }
 function placeHotspot(){
- const hs=$('#hotspot');if(!scene||state.reading||pose.engineChapter||innerWidth<761){hs.classList.add('off');return;}
+ const hs=$('#hotspot');if(!scene||state.reading||pose.engineChapter||pose.finale?.blend>.05||innerWidth<761){hs.classList.add('off');return;}
  const i=pose.index,a=scene.anchor(i),inWindow=i===5?(shownP>4.995?1:0):smooth((pose.local-.07)/.08)*(1-smooth((pose.local-.36)/.08));
  const vis=a.ok&&!activeDialog?inWindow:0;
  if(hs.dataset.index!==String(i)){hs.dataset.index=String(i);$('#hotspot-label').textContent=HOTSPOTS[i];}
@@ -71,6 +74,8 @@ function schedule(){if(frameId===null&&!document.hidden)frameId=requestAnimation
 function frame(now){
  frameId=null;
  if(document.body.classList.contains('engine-open'))return;
+ if(cameraTravel){const q=Math.min(1,(now-cameraTravel.start)/cameraTravel.duration);window.scrollTo(0,cameraTravel.from+(cameraTravel.to-cameraTravel.from)*smooth(q));snap=true;if(q===1)cameraTravel=null;}
+ if(finalePlayback){const q=Math.min(1,(now-finalePlayback)/1000/FINALE_SECONDS);const end=$('#encerrar');window.scrollTo(0,end.offsetTop+(.34+.66*q)*(end.offsetHeight-innerHeight));snap=true;if(q===1)finalePlayback=null;}
  targetP=progress();
  // At rest (camera settled, no pointer for 1.5 s) the ambient motion runs at ~30 fps to spare the GPU.
  const idle=scene&&!state.reading&&shownP===targetP&&!snap&&now-lastInput>1500;
@@ -85,8 +90,12 @@ function frame(now){
  if($('#monitor-page').textContent!==label)$('#monitor-page').textContent=label;
  const nextLabel=monitor.beat===2?'Seguir para o motor →':'Próxima →';if($('[data-monitor-next]').textContent!==nextLabel)$('[data-monitor-next]').textContent=nextLabel;
  pose=narrativePose(shownP);
+ document.body.classList.toggle('finale-running',!!pose.finale&&pose.finale.blend>.05);
+ document.body.classList.toggle('finale-crossed',!!pose.finale?.crossed);
+ $('#finish-status').textContent=pose.finale?.crossed?'Linha de chegada cruzada':pose.finale?.race>0?'Reta final':'';
  const engineLocal=pose.engineProgress;pose.enginePaused=enginePaused;
  document.body.classList.toggle('in-engine-chapter',pose.engineChapter);
+ document.body.classList.toggle('engine-returning',pose.engineChapter&&engineLocal>.905);
  // Outside the chapter the copy returns to the opening, so a later pass through Encerrar never shows a lesson left from an earlier visit.
  {const put=(s,v)=>{const e=$(s);if(e.textContent!==v)e.textContent=v;};
  const beat=copyBeat(engineLocal),lesson=ENGINE_LESSONS[beat],inside=pose.engineChapter&&engineLocal>.27;
@@ -101,12 +110,14 @@ function frame(now){
 }
 function setReading(on){state.reading=on;if(on){$('#title-motor-do-loop').textContent=ENGINE_INTRO.title;$('#engine-chapter-text').textContent=ENGINE_INTRO.text;$('#engine-part-label').textContent=ENGINE_INTRO.part;$('#engine-source').hidden=false;}document.body.classList.remove('in-engine-chapter');document.body.classList.remove('monitor-focused');document.body.classList.toggle('reading',on);$('#reading').setAttribute('aria-pressed',String(on));$('#reading').textContent=on?'Modo cinema':'Modo leitura';$$('.lesson').forEach(d=>d.open=on);$$('.chapter').forEach(s=>{s.style.removeProperty('--in');s.style.removeProperty('--out');s.classList.remove('copy-off','dissolving');});measure();if(on){$('#load-state').textContent='Leitura · movimento pausado';$('#hotspot').classList.add('off');paint();}else{if(scene)$('#load-state').textContent='';else loadScene();snap=true;schedule();}}
 let enginePaused=false;
-function goEngine(p){const el=$('#motor-do-loop');window.scrollTo({top:el.offsetTop+p*el.offsetHeight,behavior:reduced.matches?'instant':'smooth'});snap=reduced.matches;schedule();}
+function goEngine(p){const el=$('#motor-do-loop');travelTo(el.offsetTop+engineScroll(p)*el.offsetHeight,2400);}
 // Each lesson's copy and its Next/Back targets switch shortly after the camera settles on the part (windows in engine-shot.js).
 function copyBeat(p){return engineBeat(Math.max(0,p-.05));}
-$('[data-engine-chapter="next"]').onclick=()=>{const p=Math.max(0,shownP-4),beat=copyBeat(p);if(p<.27)goEngine(.35);else if(beat<2)goEngine(beat===0?.58:.82);else $('#corrigir').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});};
-$('[data-engine-chapter="back"]').onclick=()=>{const p=Math.max(0,shownP-4),beat=copyBeat(p);if(p<.27)goMonitor(2);else goEngine(beat===2?.58:beat===1?.35:0);};
-$('#engine-motion').onclick=()=>{enginePaused=!enginePaused;$('#engine-motion').setAttribute('aria-pressed',String(enginePaused));$('#engine-motion').textContent=enginePaused?'Mover motor':'Pausar motor';};
+$('[data-engine-chapter="next"]').onclick=()=>{const p=pose.engineProgress||0,beat=copyBeat(p);if(p<.27)goEngine(.35);else if(beat<2)goEngine(beat===0?.58:.82);else travelTo($('#corrigir').offsetTop,4200);};
+$('[data-engine-chapter="back"]').onclick=()=>{const p=pose.engineProgress||0,beat=copyBeat(p);if(p<.27)goMonitor(2);else goEngine(beat===2?.58:beat===1?.35:0);};
+$('#play-finale').onclick=()=>{if(reduced.matches){__aula.goto(7);return;}finalePlayback=performance.now();schedule();};
+ for(const event of ['wheel','touchstart','keydown'])window.addEventListener(event,()=>{finalePlayback=null;cameraTravel=null;},{passive:true});
+ $('#engine-motion').onclick=()=>{enginePaused=!enginePaused;$('#engine-motion').setAttribute('aria-pressed',String(enginePaused));$('#engine-motion').textContent=enginePaused?'Mover motor':'Pausar motor';};
 $('#reading').addEventListener('click',()=>{const id=CHAPTER_IDS[Math.max(0,state.chapter)];setReading(!state.reading);document.getElementById(id).scrollIntoView();measure();snap=true;paint();});
 $('#preload-read').addEventListener('click',()=>{if(loading)loadAbort?.abort();setReading(true);document.body.classList.add('scene-ready');const h=$('#title-preparar');h.tabIndex=-1;h.focus({preventScroll:true});});
 reduced.addEventListener('change',e=>setReading(e.matches));

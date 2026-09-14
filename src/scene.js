@@ -1,3 +1,4 @@
+import {createFinishLine} from './finale.js';
 import {createInCarEngine} from './engine/in-car.js';
 import {engineShot} from './engine/engine-shot.js';
 import {createFrameQuality} from './fx/frame-quality.js';
@@ -177,6 +178,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
   const tunnel = createTunnel({renderer, scene, mobile});
   // Night circuit: the world runs past the parked car, so it shares the car coordinates.
   const track = createTrack({THREE, renderer, mobile});
+  const finishLine=createFinishLine(THREE,track);
   scene.add(track.root);
   const wheelBlur = createWheelBlur({THREE, mechanics});
   const sparks = createSparks({THREE, renderer, mobile});
@@ -245,6 +247,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     const portrait = mobile ? portraitFrame(pose, width / height) : null;
     camera.position.fromArray(portrait ? portrait.camera : pose.camera);
     target.fromArray(portrait ? portrait.target : pose.target);
+    if(mobile&&pose.finale){const f=pose.finale;camera.position.lerp(offset.fromArray(f.camera.map((v,i)=>f.target[i]+(v-f.target[i])*1.65)),f.blend);target.lerp(offset.fromArray(f.target),f.blend);}
     // Dedicated monitor reading (monitor-scene.js; story.js monitorShot): a drifting shot with a rack focus,
     // blended over the held island pose. Damped like main.js damps the story, so a wheel step never jumps the
     // lens; the reading snaps while the shot is out of frame (arriving from elsewhere does not replay pages).
@@ -271,10 +274,11 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     // Track run: the frame drops the text-column offset and centres the car; the speed camera adds
     // millimetre shake, a slow sway and the FOV kick on top of the take.
     const c = Math.max(pose.center || 0, dedicated), run = pose.speed || 0, r = pose.track || 0;
-    camera.setViewOffset(width, height, mobile ? 0 : -width * .15 * (1 - c), portrait ? height * portrait.offsetY * (1 - dedicated) : -height * .03 * (1 - c), width, height);
+    camera.setViewOffset(width, height, mobile ? 0 : -width * .15 * (1 - c), portrait ? height * portrait.offsetY * (1 - dedicated)*(1-(pose.finale?.blend||0)) : -height * .03 * (1 - c), width, height);
     speedCamera(time, run, shake, pose.fov);
     const s = pose.shake || 0;
     camera.fov = portrait ? portrait.fov + shake.fovKick * s * 1.32 : pose.fov + shake.fovKick * s;
+    if(mobile&&pose.finale)camera.fov=mix(camera.fov,44,pose.finale.blend);
     if (shot.lens) camera.fov = mix(camera.fov, shot.lens.fov, dedicated);
     if(engineZoom>0)camera.fov = mix(camera.fov,engineTake.fov,engineZoom);
     camera.far = r > 0 ? track.cameraFar : 80;
@@ -292,9 +296,11 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     inCarEngine.update(dt,engineTake,pose.enginePaused);
     // The circuit integrates its own roll; the wheels follow it (after mechanics rewrote the spin).
     if (r > 0 || run > 0) {
-      const motion = track.update(time, dt, run);
+      if(pose.finale){track.motion.travel=pose.finale.distance;track.motion.wheelAngle=pose.finale.distance/.33;}
+      const motion = track.update(time, pose.finale?0:dt, run);
       if (run > 0) for (const w of mechanics.wheels) w.spinPivot.rotation.x = motion.wheelAngle;
     }
+    finishLine.update(pose.finale);
     wheelBlur.update(run);
     sparks.update(time, run * r);
     // Arrival at the box (the track is the outgoing world): the discs glow while speed falls and the
@@ -462,7 +468,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
       if (!stage.dataset.loaded) { stage.dataset.loaded = 'true'; stage.classList.add('loaded'); }
       adapt(time * 1000, budgetMs);
     },
-    dispose() { inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
+    dispose() { finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
   };
 }
 
