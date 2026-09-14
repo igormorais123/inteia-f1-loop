@@ -1,0 +1,61 @@
+{
+  "createdAt": "2026-09-14T02:39:32.263Z",
+  "assets": [
+    {
+      "createdAt": "2026-09-14T02:39:31.867Z",
+      "source": "public/assets/carro-aula.glb",
+      "output": "public/assets/carro-aula-v2.glb",
+      "sourceSha256": "675c67f5fb9a5220ea4ae71f3280f4e11b3e3a45e4e54e3766a8eb6a8ac48cc1",
+      "outputSha256": "0370d9e481b12c1639dfebd5f03181809b37af04b4ab13a982f29a848ae76747",
+      "bytesBefore": 10407208,
+      "bytesAfter": 2010024,
+      "meshes": 97,
+      "nodes": 138,
+      "assemblyParts": 97,
+      "nodeNamesAndExtrasPreserved": true,
+      "geometrySimplified": false,
+      "compression": "EXT_meshopt_compression high; 16 bit position quantization; WebP quality 88",
+      "textureLimit": 2048,
+      "limitation": "Quantization changes vertex positions and node transforms slightly; mechanics and visual appearance require separate verification."
+    },
+    {
+      "createdAt": "2026-09-14T02:39:32.21Z",
+      "source": "public/assets/carro-aula-mobile.glb",
+      "output": "public/assets/carro-aula-mobile-v2.glb",
+      "sourceSha256": "260e6ba585be62ecf01bea10a567228bb0ea4e25dd30f7e2728b015171d68598",
+      "outputSha256": "55651c989be6d8de632eb57de9b5f651d9197f14c80e792d785a36bbc00e6fe3",
+      "bytesBefore": 7309200,
+      "bytesAfter": 1241300,
+      "meshes": 97,
+      "nodes": 138,
+      "assemblyParts": 97,
+      "nodeNamesAndExtrasPreserved": true,
+      "geometrySimplified": false,
+      "compression": "EXT_meshopt_compression high; 16 bit position quantization; WebP quality 88",
+      "textureLimit": 1024,
+      "limitation": "Quantization changes vertex positions and node transforms slightly; mechanics and visual appearance require separate verification."
+    },
+    {
+      "source": "public/assets/box-poster.png",
+      "output": "public/assets/box-poster.webp",
+      "bytesBefore": 875057,
+      "bytesAfter": 56536,
+      "outputSha256": "b2111874fea33ce6a1787ab579ec24e9e710efbadf64ec10679a503fc76471aa"
+    }
+  ],
+  "status": "Registro histórico da primeira otimização, substituída. Para os arquivos atuais, consulte currentAssets e as proveniências individuais.",
+  "currentAssets": [
+    {
+      "bytes": 2293292,
+      "output": "public/assets/carro-aula-v2.glb",
+      "provenance": "public/assets/carro-aula-v2.proveniencia.json",
+      "outputSha256": "02bae139775f9c99f069e8ba664f4076cbbaaf8afdce6545a81afb77462ca245"
+    },
+    {
+      "bytes": 1406824,
+      "output": "public/assets/carro-aula-mobile-v2.glb",
+      "provenance": "public/assets/carro-aula-mobile-v2.proveniencia.json",
+      "outputSha256": "00cf72ae674b5ba1b8579821540b9f07278b49de911df763f8a1c17e5d1073d8"
+    }
+  ]
+}

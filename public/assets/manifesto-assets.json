@@ -1,0 +1,498 @@
+{
+  "checkedAt": "2026-09-13T04:03:38.754Z",
+  "sourceRoot": "INTEIA-laboratorio-3d",
+  "sourceHead": "0c9dde4107737622fc2088bb2e76bc5ec979e443",
+  "sourceWorkingTreeStatus": "clean",
+  "sourceReadOnly": true,
+  "sourceAssets": [
+    {
+      "path": "INTEIA-laboratorio-3d/web/assets/carro-movable.glb",
+      "bytes": 26454116,
+      "sha256": "f192b6a4e09f5ec1f65b2ccf55f53ac8d84eb62d13ac19a1347c7f9aca02a3bc",
+      "meshes": 97,
+      "nodes": 138,
+      "triangleCount": 752824,
+      "animations": []
+    },
+    {
+      "path": "INTEIA-laboratorio-3d/modelos/INTEIA_F1_estatico.glb",
+      "bytes": 19896224,
+      "sha256": "e96c7e75739f1afc0fbe466679d78ad6426cba0433454d2ef02347efa9900e3c",
+      "meshes": 97,
+      "nodes": 107,
+      "triangleCount": 752823,
+      "animations": []
+    },
+    {
+      "path": "INTEIA-laboratorio-3d/modelos/INTEIA_F1_animado.glb",
+      "bytes": 20288928,
+      "sha256": "3e5fa7825faebb3dd5b55fc4812681f1333333e64b166f935e1f196b340b235a",
+      "meshes": 97,
+      "nodes": 107,
+      "triangleCount": 752823,
+      "animations": [
+        {
+          "name": "INTEIA_Demonstracao_Montagem_Rodas_DRS",
+          "channels": 104
+        }
+      ]
+    },
+    {
+      "path": "INTEIA-laboratorio-3d/ambientes/INTEIA-box-laboratorio.glb",
+      "bytes": 10302288,
+      "sha256": "b443c6e556e96d6c247dde32d0df9153d3fd0ec0e992329fd2a85dea6638e608",
+      "meshes": 568,
+      "nodes": 581,
+      "triangleCount": 128860,
+      "animations": []
+    }
+  ],
+  "copiedSources": [
+    {
+      "path": "materia-prima/modulos-lab/aero-physics.mjs",
+      "bytes": 1377,
+      "sha256": "ddec76df50dd3dba23d2361d5579be999d70a4a1bd58dce99001fd4b9c146482",
+      "source": "INTEIA-laboratorio-3d/web/src/aero-physics.mjs",
+      "sourceSha256": "ddec76df50dd3dba23d2361d5579be999d70a4a1bd58dce99001fd4b9c146482",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-lab/branding.js",
+      "bytes": 2670,
+      "sha256": "e926cc5bf5c9e94a808dc3ceaeb05972ec8062e36c56e3e4fb2f71f887f572f3",
+      "source": "INTEIA-laboratorio-3d/web/src/branding.js",
+      "sourceSha256": "84d47397f7255884a41f3273c493746b6b74de0d789cfc55052edd1b8671380b",
+      "comparison": "different"
+    },
+    {
+      "path": "materia-prima/modulos-lab/flow-detail.js",
+      "bytes": 4668,
+      "sha256": "436414a7e85b9ad8a043c469412b63224dc101e4caba06e76340977d85684f1a",
+      "source": "INTEIA-laboratorio-3d/web/src/flow-detail.js",
+      "sourceSha256": "436414a7e85b9ad8a043c469412b63224dc101e4caba06e76340977d85684f1a",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-lab/garage.js",
+      "bytes": 16330,
+      "sha256": "d4f061b73296c221d2d0d3ae2c5c00d88115dc0f11f719b5b569ebbe60225792",
+      "source": "INTEIA-laboratorio-3d/web/src/garage.js",
+      "sourceSha256": "881afa322c3ed23315549e48147df9f1f47e31836ed29cc24730538bbd91ced4",
+      "comparison": "different"
+    },
+    {
+      "path": "materia-prima/modulos-lab/identity.js",
+      "bytes": 2245,
+      "sha256": "f7da18ffada2006737675abb026d621097f8219e37587a5b72c1dfc798b089a6",
+      "source": "INTEIA-laboratorio-3d/web/src/identity.js",
+      "sourceSha256": "f7da18ffada2006737675abb026d621097f8219e37587a5b72c1dfc798b089a6",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-lab/mechanics.js",
+      "bytes": 7149,
+      "sha256": "e6795bbc6ccccca32f2c4582cae3fab14d798ff3d7d0a31b23d59ecc5b1735eb",
+      "source": "INTEIA-laboratorio-3d/web/src/mechanics.js",
+      "sourceSha256": "e6795bbc6ccccca32f2c4582cae3fab14d798ff3d7d0a31b23d59ecc5b1735eb",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-lab/studio.js",
+      "bytes": 10437,
+      "sha256": "98dd60bbb651c3b287fd0a79cb3cdc74b2f1f02a788ef7ac5b6687480b2b1ae6",
+      "source": "INTEIA-laboratorio-3d/web/src/studio.js",
+      "sourceSha256": "36ca53b97600bcdcec404b67ab42333afefe20c00d046d2c92d28145f6b6d8e1",
+      "comparison": "different"
+    },
+    {
+      "path": "materia-prima/modulos-lab/tunnel-visual.js",
+      "bytes": 6393,
+      "sha256": "46435c35174bd737c548b964d23a577214f26c645459bf8f4d792b183ffd02c5",
+      "source": "INTEIA-laboratorio-3d/web/src/tunnel-visual.js",
+      "sourceSha256": "46435c35174bd737c548b964d23a577214f26c645459bf8f4d792b183ffd02c5",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-lab/wind-tunnel.js",
+      "bytes": 8478,
+      "sha256": "7795a0a4bf6a3462b7c9c81d20431b26e133041a8930dcda8ee2191bfd9556e5",
+      "source": "INTEIA-laboratorio-3d/web/src/wind-tunnel.js",
+      "sourceSha256": "7795a0a4bf6a3462b7c9c81d20431b26e133041a8930dcda8ee2191bfd9556e5",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-atualizados/branding.js",
+      "bytes": 2177,
+      "sha256": "84d47397f7255884a41f3273c493746b6b74de0d789cfc55052edd1b8671380b",
+      "source": "INTEIA-laboratorio-3d/web/src/branding.js",
+      "sourceSha256": "84d47397f7255884a41f3273c493746b6b74de0d789cfc55052edd1b8671380b",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-atualizados/garage.js",
+      "bytes": 16785,
+      "sha256": "881afa322c3ed23315549e48147df9f1f47e31836ed29cc24730538bbd91ced4",
+      "source": "INTEIA-laboratorio-3d/web/src/garage.js",
+      "sourceSha256": "881afa322c3ed23315549e48147df9f1f47e31836ed29cc24730538bbd91ced4",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-atualizados/identity.js",
+      "bytes": 2245,
+      "sha256": "f7da18ffada2006737675abb026d621097f8219e37587a5b72c1dfc798b089a6",
+      "source": "INTEIA-laboratorio-3d/web/src/identity.js",
+      "sourceSha256": "f7da18ffada2006737675abb026d621097f8219e37587a5b72c1dfc798b089a6",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-atualizados/mechanics.js",
+      "bytes": 7149,
+      "sha256": "e6795bbc6ccccca32f2c4582cae3fab14d798ff3d7d0a31b23d59ecc5b1735eb",
+      "source": "INTEIA-laboratorio-3d/web/src/mechanics.js",
+      "sourceSha256": "e6795bbc6ccccca32f2c4582cae3fab14d798ff3d7d0a31b23d59ecc5b1735eb",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/modulos-atualizados/studio.js",
+      "bytes": 10769,
+      "sha256": "36ca53b97600bcdcec404b67ab42333afefe20c00d046d2c92d28145f6b6d8e1",
+      "source": "INTEIA-laboratorio-3d/web/src/studio.js",
+      "sourceSha256": "36ca53b97600bcdcec404b67ab42333afefe20c00d046d2c92d28145f6b6d8e1",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/identidade/Identidade-INTEIA.html",
+      "bytes": 4800,
+      "sha256": "27ad373a0090920183c0e847b088aada63cb80e41c8ff415d3eab9105060b27b",
+      "source": "INTEIA-laboratorio-3d/identidade/Identidade-INTEIA.html",
+      "sourceSha256": "27ad373a0090920183c0e847b088aada63cb80e41c8ff415d3eab9105060b27b",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/identidade/INTEIA-monocromatico.svg",
+      "bytes": 1110,
+      "sha256": "6a09b41d3bfb56c144acc7639b4fb585cf6ceb9ff8ceb15291cfc7ad8b08db25",
+      "source": "INTEIA-laboratorio-3d/identidade/INTEIA-monocromatico.svg",
+      "sourceSha256": "6a09b41d3bfb56c144acc7639b4fb585cf6ceb9ff8ceb15291cfc7ad8b08db25",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/identidade/INTEIA-negativo.svg",
+      "bytes": 1110,
+      "sha256": "0e461dc57af4fb234f631495264b872edc6bb0945555e53862f14773b74f6bd9",
+      "source": "INTEIA-laboratorio-3d/identidade/INTEIA-negativo.svg",
+      "sourceSha256": "0e461dc57af4fb234f631495264b872edc6bb0945555e53862f14773b74f6bd9",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/identidade/INTEIA-principal.svg",
+      "bytes": 1110,
+      "sha256": "4bb74bb42dca65c2b42b48f68e49a3bf0e5e2d9f2b08a9e89ecb4063f24d7464",
+      "source": "INTEIA-laboratorio-3d/identidade/INTEIA-principal.svg",
+      "sourceSha256": "4bb74bb42dca65c2b42b48f68e49a3bf0e5e2d9f2b08a9e89ecb4063f24d7464",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/identidade/INTEIA-simbolo.svg",
+      "bytes": 188,
+      "sha256": "b7c5b7b2b2e147a117ba0664f75b1abb71334cbc1aa613e02b60fc4bcfedc2c1",
+      "source": "INTEIA-laboratorio-3d/identidade/INTEIA-simbolo.svg",
+      "sourceSha256": "b7c5b7b2b2e147a117ba0664f75b1abb71334cbc1aa613e02b60fc4bcfedc2c1",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/identidade/LEIA-ME.md",
+      "bytes": 1602,
+      "sha256": "cfcfd1b168a95fac3a3abfa84945a01d0f914159655693330b48b9dbc8e4fcd1",
+      "source": "INTEIA-laboratorio-3d/identidade/LEIA-ME.md",
+      "sourceSha256": "cfcfd1b168a95fac3a3abfa84945a01d0f914159655693330b48b9dbc8e4fcd1",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/ambientes/INTEIA-box-laboratorio.glb",
+      "bytes": 10302056,
+      "sha256": "a75030a6079a414a0a185e2c265507b253eb65d2426cd399eef2c7a35082631b",
+      "source": "INTEIA-laboratorio-3d/ambientes/INTEIA-box-laboratorio.glb",
+      "sourceSha256": "b443c6e556e96d6c247dde32d0df9153d3fd0ec0e992329fd2a85dea6638e608",
+      "comparison": "different"
+    },
+    {
+      "path": "materia-prima/texturas/INTEIA_Carbono_BaseColor.png",
+      "bytes": 4840,
+      "sha256": "e0b9e969eeed3c6f4fb6d599384879da202201780182372d6a031d307340fd8b",
+      "source": "INTEIA-laboratorio-3d/texturas/INTEIA_Carbono_BaseColor.png",
+      "sourceSha256": "e0b9e969eeed3c6f4fb6d599384879da202201780182372d6a031d307340fd8b",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/docs-lab/AERODINAMICA.md",
+      "bytes": 6311,
+      "sha256": "49f4305a6a25b26cfdd8fff13ec54bd31cdb6e23c97744e0f2c36ee6f81ea098",
+      "source": "INTEIA-laboratorio-3d/docs/AERODINAMICA.md",
+      "sourceSha256": "49f4305a6a25b26cfdd8fff13ec54bd31cdb6e23c97744e0f2c36ee6f81ea098",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/docs-lab/ARQUITETURA.md",
+      "bytes": 2393,
+      "sha256": "7c2f6116f0913610b31e9827c4d02e7e6d847e5462d79f54dcfc8bdd8fa2ada9",
+      "source": "INTEIA-laboratorio-3d/docs/ARQUITETURA.md",
+      "sourceSha256": "0d9ba0c62bd01a50fb73efb25de5bee14b0ba96f1ef955760c056edf0f943d23",
+      "comparison": "different"
+    },
+    {
+      "path": "materia-prima/docs-lab/BOX-LABORATORIO.md",
+      "bytes": 4715,
+      "sha256": "7a4d90c19c5e39f66089ede55f946f99277990963db590223e0177ce14e59bc8",
+      "source": "INTEIA-laboratorio-3d/docs/BOX-LABORATORIO.md",
+      "sourceSha256": "7a4d90c19c5e39f66089ede55f946f99277990963db590223e0177ce14e59bc8",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/docs-lab/componentes-origem.json",
+      "bytes": 82129,
+      "sha256": "dcde4fff523ba47b41f19736d9ab77e86480e74a80fa50b76a5ac5dcd203918c",
+      "source": "INTEIA-laboratorio-3d/documentacao/componentes-origem.json",
+      "sourceSha256": "dcde4fff523ba47b41f19736d9ab77e86480e74a80fa50b76a5ac5dcd203918c",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/docs-lab/DIREITOS-E-PROCEDENCIA.md",
+      "bytes": 1581,
+      "sha256": "bb4df5145aee2a7db07f8cb7aff830658f83a9bc4438fdb86a69a35d789dd498",
+      "source": "INTEIA-laboratorio-3d/docs/DIREITOS-E-PROCEDENCIA.md",
+      "sourceSha256": "bb4df5145aee2a7db07f8cb7aff830658f83a9bc4438fdb86a69a35d789dd498",
+      "comparison": "identical"
+    },
+    {
+      "path": "materia-prima/docs-lab/INTEGRACAO.md",
+      "bytes": 2578,
+      "sha256": "cffcadec8f43e58aa260d28e712f7caca431bba7e54f47ddcf366bef4639f967",
+      "source": "INTEIA-laboratorio-3d/docs/INTEGRACAO.md",
+      "sourceSha256": "cffcadec8f43e58aa260d28e712f7caca431bba7e54f47ddcf366bef4639f967",
+      "comparison": "identical"
+    }
+  ],
+  "derivedAssets": [
+    {
+      "path": "public/assets/carro-aula.glb",
+      "bytes": 10407208,
+      "sha256": "675c67f5fb9a5220ea4ae71f3280f4e11b3e3a45e4e54e3766a8eb6a8ac48cc1"
+    },
+    {
+      "path": "public/assets/carro-aula.proveniencia.json",
+      "bytes": 33027,
+      "sha256": "e685338d34a48241ba7527871a36da580d657b4556854d468255973e37d51937"
+    },
+    {
+      "path": "public/assets/carro-aula.validacao.json",
+      "bytes": 468,
+      "sha256": "33aef5d6d38c9ef5c88a2e35451fa8c5b847f54b69261b056cf68e5ef93347b2"
+    },
+    {
+      "path": "public/assets/carro-aula-mobile.glb",
+      "bytes": 7309200,
+      "sha256": "260e6ba585be62ecf01bea10a567228bb0ea4e25dd30f7e2728b015171d68598"
+    },
+    {
+      "path": "public/assets/carro-aula-mobile.proveniencia.json",
+      "bytes": 32938,
+      "sha256": "0030754f5362eb48f67fbd00f1eca746750399543944afdadd5b65e907aad224"
+    },
+    {
+      "path": "public/assets/carro-aula-mobile.validacao.json",
+      "bytes": 468,
+      "sha256": "e2575046691b48f8302b7ae36f12704562845b6fbe9e60ba476a83f07fe98d6d"
+    },
+    {
+      "path": "public/assets/INTEIA-LICENSE.txt",
+      "bytes": 920,
+      "sha256": "d1e6e7e86a65fb14c452f381d1619f698221f226636c5c11758f235c55d9819f"
+    },
+    {
+      "path": "public/assets/INTEIA-THIRD-PARTY-NOTICES.md",
+      "bytes": 540,
+      "sha256": "7c7b338a6141ec492d3f8d991a62041bacf237e47c1179eb0d4cea53f8bd55bb"
+    },
+    {
+      "path": "public/assets/box-aula-referencia.glb",
+      "bytes": 10302288,
+      "sha256": "b443c6e556e96d6c247dde32d0df9153d3fd0ec0e992329fd2a85dea6638e608"
+    },
+    {
+      "path": "public/assets/carro-aula-v2.glb",
+      "bytes": 2293292,
+      "sha256": "02bae139775f9c99f069e8ba664f4076cbbaaf8afdce6545a81afb77462ca245"
+    },
+    {
+      "path": "public/assets/carro-aula-v2.proveniencia.json",
+      "bytes": 7185,
+      "sha256": "8e78afd91287a812889fd7a642f1c6474fa4451bd13f82ec46ca3d3509177ef9"
+    },
+    {
+      "path": "public/assets/carro-aula-v2.validacao.json",
+      "bytes": 1041,
+      "sha256": "3e86b6f05580bb866f12472d6fad010a6b2058a3148a71eb2602eb1a2dbe0f03"
+    },
+    {
+      "path": "public/assets/carro-aula-mobile-v2.glb",
+      "bytes": 1406824,
+      "sha256": "00cf72ae674b5ba1b8579821540b9f07278b49de911df763f8a1c17e5d1073d8"
+    },
+    {
+      "path": "public/assets/carro-aula-mobile-v2.proveniencia.json",
+      "bytes": 7225,
+      "sha256": "3f48679fb70192d3a35c1d82781faeda80283489e59b0f41b6d14138cfee96c1"
+    },
+    {
+      "path": "public/assets/carro-aula-mobile-v2.validacao.json",
+      "bytes": 1048,
+      "sha256": "dd920c0e1346d75081b98b6c4e22c0f5db249cfdbf448b393ed9e21d213c7f82"
+    },
+    {
+      "path": "public/fonts/BebasNeue-Regular.woff2",
+      "bytes": 15268,
+      "sha256": "914585e10b8efc9a3f49c78d18c104cf517ec6c522e0daac9f934c1ff3bec625"
+    },
+    {
+      "path": "public/fonts/Lato-Regular.woff2",
+      "bytes": 52452,
+      "sha256": "9169940b79bd57989f014bd7d92413fc1c2b4a46f73b559e88af5f3166f99baf"
+    },
+    {
+      "path": "public/fonts/proveniencia-woff2.json",
+      "bytes": 2052,
+      "sha256": "ccf62301ba4dae7285bab7dcdfcb3c459a276120fbad577e743e3fa8a93cec61"
+    }
+  ],
+  "unchangedCopies": [
+    {
+      "path": "public/assets/box-aula-referencia.glb",
+      "source": "INTEIA-laboratorio-3d/ambientes/INTEIA-box-laboratorio.glb",
+      "identical": true
+    }
+  ],
+  "toolchain": {
+    "three": "0.186.0",
+    "meshoptimizerBuild": "1.1, bundled in installed Three.js",
+    "simplifierSha256": "614402ffac05c8a40711f0d9a5d9a904dadc3ee2e7ed56d4568751dbd7fc8c35",
+    "runtimeDecoderRequired": false,
+    "v2": {
+      "meshoptimizer": "1.2.0 (npm, fora do repositório)",
+      "sharp": "0.35.4 (npm, fora do repositório)",
+      "gltfTransformCliValidator": "@gltf-transform/cli 4.5.0 validate: 0 erros, 0 avisos nos dois v2",
+      "runtimeDecoderRequired": "MeshoptDecoder de three/addons/libs/meshopt_decoder.module.js",
+      "positionEncoding": "float32 + EXPONENTIAL (transforms dos nós intocados)"
+    }
+  },
+  "reproducibility": [
+    {
+      "path": "tools/optimize-car.mjs",
+      "bytes": 9587,
+      "sha256": "731a4346bff6f2d535a74d0dd292671782eca496600b6432e87e851dcf490259"
+    },
+    {
+      "path": "tools/audit-assets.mjs",
+      "bytes": 4791,
+      "sha256": "326463ce0db9cdfaaf88f84de42bb71e9fca7902726b36cd7ae27ab8eb38ff93"
+    },
+    {
+      "path": "tools/optimize-car-v2.mjs",
+      "bytes": 17723,
+      "sha256": "a1a325bf213df13c2a85169ac68cdfd706bcb81b7a8f4756765d471b915cc694"
+    },
+    {
+      "path": "tools/verify-car.mjs",
+      "bytes": 8476,
+      "sha256": "9ef031717ff3bab00883f2fa4ea027ca598c23e0275b9ecc18affa3be0139e4b"
+    },
+    {
+      "path": "dev/assets-compare.html",
+      "bytes": 935,
+      "sha256": "943e6624b3201a9299ecc4e3bc8074ebf7708e119195140888989a2cefa9387a"
+    },
+    {
+      "path": "dev/assets-compare.js",
+      "bytes": 5465,
+      "sha256": "0d656203ee9d91c252fc63f1100d0b8d342f8764faca47ef118297119c3f0b33"
+    }
+  ],
+  "scope": "SHA-256 verifies the listed bytes only. It does not certify visual quality, licensing, physical fidelity or device performance.",
+  "updatedAt": "2026-09-14T02:56:53.538Z",
+  "v2VisualComparison": {
+    "capturedAt": "2026-09-14T02:55:45.221Z",
+    "page": "dev/assets-compare.html",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Ti (0x00002486) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "screenshots": "shots/assets/*.png (ignorado pelo git)",
+    "method": "Mesmo setupStudio/applyCarMaterials/applyInteiaBranding; diferença por pixel = máximo entre canais RGB",
+    "views": [
+      {
+        "set": "desktop",
+        "view": "hero",
+        "meanAbsDiff255": 0.059,
+        "pixelsOver16Percent": 0.016
+      },
+      {
+        "set": "desktop",
+        "view": "lado",
+        "meanAbsDiff255": 0.083,
+        "pixelsOver16Percent": 0.015
+      },
+      {
+        "set": "desktop",
+        "view": "decalque",
+        "meanAbsDiff255": 0.244,
+        "pixelsOver16Percent": 0.003
+      },
+      {
+        "set": "desktop",
+        "view": "volante",
+        "meanAbsDiff255": 0.138,
+        "pixelsOver16Percent": 0.026
+      },
+      {
+        "set": "desktop",
+        "view": "pneu",
+        "meanAbsDiff255": 0.138,
+        "pixelsOver16Percent": 0.017
+      },
+      {
+        "set": "desktop",
+        "view": "traseira",
+        "meanAbsDiff255": 0.04,
+        "pixelsOver16Percent": 0.014
+      },
+      {
+        "set": "desktop",
+        "view": "asa",
+        "meanAbsDiff255": 0.104,
+        "pixelsOver16Percent": 0.006
+      },
+      {
+        "set": "mobile",
+        "view": "hero",
+        "meanAbsDiff255": 0.059,
+        "pixelsOver16Percent": 0.018
+      },
+      {
+        "set": "mobile",
+        "view": "decalque",
+        "meanAbsDiff255": 0.225,
+        "pixelsOver16Percent": 0.003
+      },
+      {
+        "set": "mobile",
+        "view": "volante",
+        "meanAbsDiff255": 0.298,
+        "pixelsOver16Percent": 0.391
+      },
+      {
+        "set": "mobile",
+        "view": "pneu",
+        "meanAbsDiff255": 0.143,
+        "pixelsOver16Percent": 0.018
+      }
+    ],
+    "judgement": "Sem perda perceptível em pintura, carbono, pneus, volante/display e decalque nas vistas capturadas."
+  }
+}

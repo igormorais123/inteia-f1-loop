@@ -1,0 +1,17 @@
+LICENÇA PROPRIETÁRIA INTEIA
+
+Copyright (c) 2026 INTEIA. Todos os direitos reservados.
+
+O projeto Laboratório 3D INTEIA, incluindo seu código original, interface,
+documentação e contribuições originais, é de titularidade da INTEIA.
+
+A disponibilização pública deste repositório não concede uma licença de
+código aberto nem autorização geral para uso, modificação, distribuição,
+sublicenciamento ou exploração comercial dos conteúdos de titularidade
+da INTEIA. Essas permissões dependem de autorização da INTEIA, respeitados
+os direitos previstos em lei e os termos aplicáveis da plataforma.
+
+Bibliotecas, modelos, imagens e demais conteúdos de terceiros permanecem
+sujeitos aos direitos e licenças de seus respectivos titulares. Esta licença
+não substitui essas licenças nem amplia direitos sobre materiais de terceiros.
+Consulte THIRD-PARTY-NOTICES.md e docs/DIREITOS-E-PROCEDENCIA.md.

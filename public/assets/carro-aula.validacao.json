@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-09-13T03:57:26.125Z",
+  "passed": true,
+  "parts": 97,
+  "wheelPivots": 4,
+  "drs": true,
+  "assemblyCycles": 20,
+  "boundsError": 2.384185791015625e-7,
+  "initialError": 0,
+  "finalError": 0,
+  "resetError": 0,
+  "dragResetError": 0,
+  "nodeContractIdentical": true,
+  "materialDefinitionsIdentical": true,
+  "limitation": "Geometry and mechanics validated in Node/Three. Does not replace visual QA or FPS measurement in the target browser."
+}

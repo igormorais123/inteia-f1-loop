@@ -1,0 +1,59 @@
+{
+  "name": "Original didactic V6 turbo power unit",
+  "version": 1,
+  "authorship": "Original procedural geometry authored for INTEIA; no downloaded CAD or manufacturer replica.",
+  "scope": "Illustrative 90-degree V6 turbo architecture with MGU-K and no MGU-H; not engineering or homologation data.",
+  "units": "metres",
+  "axes": "glTF Y up, longitudinal Z",
+  "blender_bbox": {
+    "min": [
+      -0.3564961552619934,
+      -0.33249998092651367,
+      0.10900000482797623
+    ],
+    "max": [
+      0.3564958870410919,
+      0.6185809969902039,
+      0.680150032043457
+    ]
+  },
+  "gltf_dimensions_xyz": [
+    0.7129920423030853,
+    0.5711500272154808,
+    0.9510809779167175
+  ],
+  "meshes": 84,
+  "nodes": 117,
+  "triangles": 265396,
+  "materials": 15,
+  "render_primitives": 92,
+  "extensions_required": [
+    "EXT_meshopt_compression"
+  ],
+  "animations": [
+    {
+      "name": "running",
+      "channels": 19,
+      "duration_seconds": 8
+    }
+  ],
+  "mechanism": {
+    "crank_radius_m": 0.0265,
+    "rod_length_m": 0.105,
+    "stroke_m": 0.053,
+    "bank_angles_deg": [
+      -45,
+      45
+    ],
+    "clip_seconds": 8,
+    "crank_turns": 4,
+    "four_stroke_cycles": 2,
+    "max_sampled_rod_length_error_m": 1.157323582801073e-08,
+    "note": "Slider-crank kinematics only. No combustion, valve timing, energy flow or manufacturer firing-order claim."
+  },
+  "bytes": 4640876,
+  "sha256": "2f056193a412878d70cfe96e7c1f42055bde17938a076bdadda704718c403eae",
+  "script_sha256": "d94afc787028a1b932db47ee18ce5781063a0963e9da71a82270e85a82097888",
+  "optimizer_sha256": "71a6b04ce82834f48a1d3a2c0f6d90cc453297a7af845b6543557f735a6c2528",
+  "license": "CC BY 4.0; credit INTEIA for the original illustrative geometry."
+}

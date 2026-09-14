@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-09-14T02:55:32.678Z",
+  "passed": true,
+  "file": "public/assets/carro-aula-v2.glb",
+  "bytes": 2293292,
+  "sha256": "02bae139775f9c99f069e8ba664f4076cbbaaf8afdce6545a81afb77462ca245",
+  "triangles": 260023,
+  "extensionsUsed": [
+    "KHR_materials_clearcoat",
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_mesh_quantization"
+  ],
+  "parts": 97,
+  "wheelPivots": 4,
+  "drs": true,
+  "assemblyCycles": 20,
+  "boundsError": 0.00008304687585136725,
+  "boundsTolerance": 0.00025,
+  "initialError": 0,
+  "finalError": 0,
+  "resetError": 0,
+  "dragResetError": 0,
+  "nodeContractIdentical": true,
+  "materialDefinitionsIdentical": true,
+  "materialCheck": "JSON de materiais idêntico ao do laboratório",
+  "boundsToleranceReason": "Posições com filtro EXPONENTIAL (mantissa de 16 bits): limite analítico sqrt(3)*2*6.1e-5 = 2.1e-4 unidades, com folga para 2.5e-4",
+  "limitation": "Geometry and mechanics validated in Node/Three. Does not replace visual QA or FPS measurement in the target browser."
+}

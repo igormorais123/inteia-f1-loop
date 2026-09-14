@@ -1,0 +1,257 @@
+{
+  "createdAt": "2026-09-14T02:55:16.651Z",
+  "origin": {
+    "laboratorySource": "INTEIA-laboratorio-3d/web/assets/carro-movable.glb",
+    "laboratorySha256": "f192b6a4e09f5ec1f65b2ccf55f53ac8d84eb62d13ac19a1347c7f9aca02a3bc",
+    "laboratoryBytes": 26454116,
+    "laboratoryTriangles": 752824,
+    "derivedBy": "tools/optimize-car.mjs --mobile",
+    "derivedSha256": "260e6ba585be62ecf01bea10a567228bb0ea4e25dd30f7e2728b015171d68598"
+  },
+  "source": "public/assets/carro-aula-mobile.glb",
+  "output": "public/assets/carro-aula-mobile-v2.glb",
+  "commands": [
+    "npm i --prefix \"%TEMP%/claude/f1-assets\" meshoptimizer@1.2.0 sharp@0.35.4",
+    "node tools/optimize-car-v2.mjs --mobile",
+    "node tools/verify-car.mjs public/assets/carro-aula-mobile-v2.glb",
+    "npx --yes @gltf-transform/cli@4.5.0 validate public/assets/carro-aula-mobile-v2.glb"
+  ],
+  "sourceSha256": "260e6ba585be62ecf01bea10a567228bb0ea4e25dd30f7e2728b015171d68598",
+  "outputSha256": "00cf72ae674b5ba1b8579821540b9f07278b49de911df763f8a1c17e5d1073d8",
+  "bytesBefore": 7309200,
+  "bytesAfter": 1406824,
+  "budgetBytes": 2000000,
+  "bytesByContent": {
+    "geometryCompressed": 976845,
+    "texturesWebp": 152142,
+    "jsonChunk": 276860
+  },
+  "triangles": 130357,
+  "trianglesChangedVsSource": false,
+  "verticesBefore": 85162,
+  "verticesAfter": 85162,
+  "primitives": 135,
+  "meshes": 97,
+  "nodes": 138,
+  "assemblyParts": 97,
+  "jsonIdenticalToSource": {
+    "asset": true,
+    "scene": true,
+    "scenes": true,
+    "nodes": true,
+    "materials": true,
+    "meshes": true,
+    "samplers": true
+  },
+  "rewrittenTopLevel": [
+    "accessors",
+    "bufferViews",
+    "buffers",
+    "images",
+    "textures",
+    "extensionsUsed",
+    "extensionsRequired"
+  ],
+  "geometry": {
+    "method": "meshopt reorderMesh (vertex cache strip + fetch remap, sem remover vértices ou triângulos); EXT_meshopt_compression codec v0 nível 2",
+    "position": "float32, filtro EXPONENTIAL SharedComponent, mantissa 16 bits",
+    "normal": "filtro OCTAHEDRAL 10 bits (KHR_mesh_quantization)",
+    "texcoord": "[0,1]: uint16 normalizado na grade de 12 bits; fora de [0,1]: float32 EXPONENTIAL 16 bits",
+    "positionMaxErrorLocalUnits": 0.00006103515625,
+    "normalMaxAngleDegrees": 0.23346843369036357,
+    "uvMaxError": 0.00012970168612191912,
+    "uvStreamsNormalizedUint16": 116,
+    "uvStreamsExponentialFloat": 37,
+    "roundtrip": "Cada stream foi decodificado com MeshoptDecoder; índices conferidos triângulo a triângulo (só rotação cíclica permitida)"
+  },
+  "textures": {
+    "limitPixels": 1024,
+    "webpQuality": 88,
+    "kernel": "sharp lanczos3, fit inside, sem ampliar",
+    "images": [
+      {
+        "name": "Pintura_rear_wing_drs",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 17993,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 3896,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_rear_wing_main_part",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 15549,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 2280,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_rear_wing_side",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 37150,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 9598,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_front_wing_side_plates",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 18990,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 3262,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_front_wing_bottom",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 24947,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 5382,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_front_wing_middle",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 13922,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 1926,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_front_wing_top",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 22857,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 4332,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_main_body",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 1118284,
+          "width": 4096,
+          "height": 4096
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 54742,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "Pintura_side_mirrors",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 20073,
+          "width": 1024,
+          "height": 1024
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 3624,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "web_texture_wheel",
+        "referencedByMaterial": false,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 448836,
+          "width": 4096,
+          "height": 4096
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 17518,
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "web_texture_steering_wheel",
+        "referencedByMaterial": true,
+        "before": {
+          "mimeType": "image/png",
+          "bytes": 1743705,
+          "width": 4096,
+          "height": 4096
+        },
+        "after": {
+          "mimeType": "image/webp",
+          "bytes": 45582,
+          "width": 1024,
+          "height": 1024
+        }
+      }
+    ]
+  },
+  "toolchain": {
+    "node": "v24.17.0",
+    "meshoptimizer": "1.2.0",
+    "sharp": "0.35.4",
+    "runtimeDecoder": "three/addons/libs/meshopt_decoder.module.js"
+  },
+  "limitation": "SHA-256 identifica bytes. Os erros acima são medidos contra a fonte decodificada; equivalência visual e desempenho exigem a comparação no navegador."
+}

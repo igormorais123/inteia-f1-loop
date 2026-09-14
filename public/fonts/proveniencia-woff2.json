@@ -1,0 +1,68 @@
+{
+  "createdAt": "2026-09-14T02:56:53.539Z",
+  "toolchain": {
+    "python": "3.14.6",
+    "fonttools": "4.63.0",
+    "brotli": "instalado no Python do sistema"
+  },
+  "coverage": "Basic Latin, Latin-1 Supplement, Latin Extended-A, General Punctuation (inclui – — ‘ ’ “ ” … •), €, setas U+2190–2199 e ↶; · × ° ª º estão no Latin-1",
+  "note": "Glifos ausentes no TTF de origem não podem ser criados pelo subconjunto; o navegador usa a fonte de fallback para eles. Kerning e recursos OpenType (GPOS/GSUB) preservados. TTF originais mantidos.",
+  "fonts": [
+    {
+      "source": "public/fonts/BebasNeue-Regular.ttf",
+      "output": "public/fonts/BebasNeue-Regular.woff2",
+      "bytesBefore": 61400,
+      "bytesAfter": 15268,
+      "sourceSha256": "08e4623805102d819f58601e46e345648846075e363b2ceb23313c2d1c83ec73",
+      "outputSha256": "914585e10b8efc9a3f49c78d18c104cf517ec6c522e0daac9f934c1ff3bec625",
+      "retainedCodepoints": 341,
+      "requestedButAbsentInSourceTtf": [
+        "→",
+        "↗",
+        "↓",
+        "↶",
+        "↑"
+      ],
+      "command": "py -m fontTools.subset public/fonts/BebasNeue-Regular.ttf --unicodes=\"U+0020-007E,U+00A0-00FF,U+0100-017F,U+2000-206F,U+20AC,U+2190-2199,U+21B6\" --layout-features=\"*\" --flavor=woff2 --output-file=public/fonts/BebasNeue-Regular.woff2"
+    },
+    {
+      "source": "public/fonts/Lato-Regular.ttf",
+      "output": "public/fonts/Lato-Regular.woff2",
+      "bytesBefore": 656568,
+      "bytesAfter": 52452,
+      "sourceSha256": "d636e4683231f931eda222d588e944d082bfd3bdba02f928bee461c0f185b251",
+      "outputSha256": "9169940b79bd57989f014bd7d92413fc1c2b4a46f73b559e88af5f3166f99baf",
+      "retainedCodepoints": 378,
+      "requestedButAbsentInSourceTtf": [
+        "↶"
+      ],
+      "command": "py -m fontTools.subset public/fonts/Lato-Regular.ttf --unicodes=\"U+0020-007E,U+00A0-00FF,U+0100-017F,U+2000-206F,U+20AC,U+2190-2199,U+21B6\" --layout-features=\"*\" --flavor=woff2 --output-file=public/fonts/Lato-Regular.woff2"
+    },
+    {
+      "source": "public/fonts/Barlow-Regular.ttf",
+      "output": "public/fonts/Barlow-Regular.woff2",
+      "origin": "https://raw.githubusercontent.com/jpt/barlow/main/fonts/ttf/Barlow-Regular.ttf",
+      "license": "https://raw.githubusercontent.com/jpt/barlow/main/OFL.txt",
+      "licenseName": "SIL Open Font License 1.1",
+      "bytesBefore": 150392,
+      "bytesAfter": 33712,
+      "sourceSha256": "1da0b65f2389aeafb817e63a18ed30569537bfa9c1d68bb45f12c25691481068",
+      "outputSha256": "c0061e66e1ae53fe21e4a2f815834f5e003749f02d8c8b7b7729338af71ec334",
+      "addedAt": "2026-09-14T14:31:02+00:00",
+      "command": "py -m fontTools.subset public/fonts/Barlow-Regular.ttf --unicodes=\"U+0020-007E,U+00A0-00FF,U+0100-017F,U+2000-206F,U+20AC,U+2190-2199,U+21B6\" --layout-features=\"*\" --flavor=woff2 --output-file=public/fonts/Barlow-Regular.woff2"
+    },
+    {
+      "source": "Barlow-SemiBold.ttf (não versionado; baixado da origem)",
+      "output": "public/fonts/Barlow-SemiBold.woff2",
+      "origin": "https://raw.githubusercontent.com/jpt/barlow/main/fonts/ttf/Barlow-SemiBold.ttf",
+      "license": "https://raw.githubusercontent.com/jpt/barlow/main/OFL.txt",
+      "licenseName": "SIL Open Font License 1.1",
+      "bytesBefore": 154124,
+      "bytesAfter": 34804,
+      "sourceSha256": "4921fa2882d1835d2f487b3b1121ba483373726c50f92f5381d078846e36f61d",
+      "outputSha256": "ebf04cf8c01212f0c636375bfd88b324dff40b556b3ce74ecd613f329691ea2b",
+      "addedAt": "2026-09-14T14:41:33+00:00",
+      "command": "py -m fontTools.subset Barlow-SemiBold.ttf --unicodes=\"U+0020-007E,U+00A0-00FF,U+0100-017F,U+2000-206F,U+20AC,U+2190-2199,U+21B6\" --layout-features=\"*\" --flavor=woff2 --output-file=public/fonts/Barlow-SemiBold.woff2"
+    }
+  ]
+}

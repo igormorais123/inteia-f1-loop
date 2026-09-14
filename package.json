@@ -1,0 +1,19 @@
+{
+  "name": "inteia-f1-loop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5198 --strictPort",
+    "build": "node render-page.mjs && vite build",
+    "test": "node --test tests/*.test.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 5198 --strictPort"
+  },
+  "dependencies": {
+    "postprocessing": "6.39.5",
+    "three": "0.186.0"
+  },
+  "devDependencies": {
+    "vite": "8.3.0"
+  }
+}

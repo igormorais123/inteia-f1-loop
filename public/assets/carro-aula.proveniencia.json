@@ -1,0 +1,1235 @@
+{
+  "createdAt": "2026-09-13T03:56:02.200Z",
+  "source": "INTEIA-laboratorio-3d/web/assets/carro-movable.glb",
+  "destination": "relogio-de-precisao/f1-loop/public/assets/carro-aula.glb",
+  "sourceSha256": "f192b6a4e09f5ec1f65b2ccf55f53ac8d84eb62d13ac19a1347c7f9aca02a3bc",
+  "outputSha256": "675c67f5fb9a5220ea4ae71f3280f4e11b3e3a45e4e54e3766a8eb6a8ac48cc1",
+  "bytesBefore": 26454116,
+  "bytesAfter": 10407208,
+  "trianglesBefore": 752824,
+  "trianglesAfter": 260023,
+  "meshes": 97,
+  "nodes": 138,
+  "assemblyParts": 97,
+  "unchangedNodeContract": true,
+  "unchangedMaterials": true,
+  "method": "MeshoptSimplifier.simplifyWithAttributes; target ratio .25; maximum relative simplifier error .0015; LockBorder; fixed extrema; normal weights 1; UV weights .1; primitives below 500 triangles unchanged; no compression decoder",
+  "limitation": "Simplifier error is an algorithm metric, not a certified physical distance or proof of visual equivalence. Original extras.triangles describes source topology and is intentionally preserved. See per-primitive trianglesAfter for derivative topology.",
+  "primitives": [
+    {
+      "mesh": "rear_wing_drs__01",
+      "primitive": 0,
+      "trianglesBefore": 768,
+      "trianglesAfter": 192,
+      "verticesBefore": 527,
+      "verticesAfter": 181,
+      "simplifierError": 0.00011605804320424795
+    },
+    {
+      "mesh": "rear_wing_drs__01",
+      "primitive": 1,
+      "trianglesBefore": 2240,
+      "trianglesAfter": 1120,
+      "verticesBefore": 1442,
+      "verticesAfter": 800,
+      "simplifierError": 0.0014864761615172029
+    },
+    {
+      "mesh": "rear_wing_drs__01",
+      "primitive": 2,
+      "trianglesBefore": 768,
+      "trianglesAfter": 192,
+      "verticesBefore": 476,
+      "verticesAfter": 171,
+      "simplifierError": 0.00015678720956202596
+    },
+    {
+      "mesh": "rear_wing_main_part__01",
+      "primitive": 0,
+      "trianglesBefore": 288,
+      "trianglesAfter": 288,
+      "verticesBefore": 171,
+      "verticesAfter": 171,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "rear_wing_main_part__01",
+      "primitive": 1,
+      "trianglesBefore": 288,
+      "trianglesAfter": 288,
+      "verticesBefore": 171,
+      "verticesAfter": 171,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "rear_wing_side__01",
+      "primitive": 0,
+      "trianglesBefore": 912,
+      "trianglesAfter": 372,
+      "verticesBefore": 613,
+      "verticesAfter": 307,
+      "simplifierError": 0.0014812926528975368
+    },
+    {
+      "mesh": "rear_wing_side__01",
+      "primitive": 1,
+      "trianglesBefore": 912,
+      "trianglesAfter": 386,
+      "verticesBefore": 613,
+      "verticesAfter": 319,
+      "simplifierError": 0.0014122002758085728
+    },
+    {
+      "mesh": "rear_wing_side__02",
+      "primitive": 0,
+      "trianglesBefore": 912,
+      "trianglesAfter": 378,
+      "verticesBefore": 613,
+      "verticesAfter": 309,
+      "simplifierError": 0.0014471701579168439
+    },
+    {
+      "mesh": "rear_wing_side__02",
+      "primitive": 1,
+      "trianglesBefore": 912,
+      "trianglesAfter": 378,
+      "verticesBefore": 613,
+      "verticesAfter": 312,
+      "simplifierError": 0.0014974649529904127
+    },
+    {
+      "mesh": "rear_wing_top_mount__01",
+      "primitive": 0,
+      "trianglesBefore": 112,
+      "trianglesAfter": 112,
+      "verticesBefore": 99,
+      "verticesAfter": 99,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "rear_wing_top_mount__02",
+      "primitive": 0,
+      "trianglesBefore": 112,
+      "trianglesAfter": 112,
+      "verticesBefore": 99,
+      "verticesAfter": 99,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "rear_wing_holder__01",
+      "primitive": 0,
+      "trianglesBefore": 1312,
+      "trianglesAfter": 568,
+      "verticesBefore": 684,
+      "verticesAfter": 312,
+      "simplifierError": 0.0014869748847559094
+    },
+    {
+      "mesh": "rear_wing_holder__02",
+      "primitive": 0,
+      "trianglesBefore": 1312,
+      "trianglesAfter": 564,
+      "verticesBefore": 684,
+      "verticesAfter": 310,
+      "simplifierError": 0.0014887647703289986
+    },
+    {
+      "mesh": "rear_wing_bottom_holder__01",
+      "primitive": 0,
+      "trianglesBefore": 320,
+      "trianglesAfter": 320,
+      "verticesBefore": 225,
+      "verticesAfter": 225,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "drs_holder__01",
+      "primitive": 0,
+      "trianglesBefore": 4736,
+      "trianglesAfter": 1834,
+      "verticesBefore": 2389,
+      "verticesAfter": 938,
+      "simplifierError": 0.0014924933202564716
+    },
+    {
+      "mesh": "drs_mechanism__01",
+      "primitive": 0,
+      "trianglesBefore": 556,
+      "trianglesAfter": 448,
+      "verticesBefore": 514,
+      "verticesAfter": 458,
+      "simplifierError": 0.00048317128675989807
+    },
+    {
+      "mesh": "drs_mechanism__02",
+      "primitive": 0,
+      "trianglesBefore": 548,
+      "trianglesAfter": 440,
+      "verticesBefore": 500,
+      "verticesAfter": 446,
+      "simplifierError": 0.000287681061308831
+    },
+    {
+      "mesh": "drs_mechanism__03",
+      "primitive": 0,
+      "trianglesBefore": 166,
+      "trianglesAfter": 166,
+      "verticesBefore": 127,
+      "verticesAfter": 127,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "front_wing_side_plates__01",
+      "primitive": 0,
+      "trianglesBefore": 1216,
+      "trianglesAfter": 502,
+      "verticesBefore": 763,
+      "verticesAfter": 378,
+      "simplifierError": 0.0014594995882362127
+    },
+    {
+      "mesh": "front_wing_side_plates__01",
+      "primitive": 1,
+      "trianglesBefore": 1216,
+      "trianglesAfter": 488,
+      "verticesBefore": 763,
+      "verticesAfter": 369,
+      "simplifierError": 0.0014846168924123049
+    },
+    {
+      "mesh": "front_wing_side_plates__02",
+      "primitive": 0,
+      "trianglesBefore": 1216,
+      "trianglesAfter": 490,
+      "verticesBefore": 763,
+      "verticesAfter": 372,
+      "simplifierError": 0.0014902950497344136
+    },
+    {
+      "mesh": "front_wing_side_plates__02",
+      "primitive": 1,
+      "trianglesBefore": 1216,
+      "trianglesAfter": 484,
+      "verticesBefore": 763,
+      "verticesAfter": 366,
+      "simplifierError": 0.0014954180223867297
+    },
+    {
+      "mesh": "front_wing_side_plates__03",
+      "primitive": 0,
+      "trianglesBefore": 544,
+      "trianglesAfter": 258,
+      "verticesBefore": 406,
+      "verticesAfter": 225,
+      "simplifierError": 0.0014852620661258698
+    },
+    {
+      "mesh": "front_wing_side_plates__04",
+      "primitive": 0,
+      "trianglesBefore": 544,
+      "trianglesAfter": 254,
+      "verticesBefore": 406,
+      "verticesAfter": 221,
+      "simplifierError": 0.0014940870460122824
+    },
+    {
+      "mesh": "front_wing_bottom__01",
+      "primitive": 0,
+      "trianglesBefore": 2656,
+      "trianglesAfter": 800,
+      "verticesBefore": 1529,
+      "verticesAfter": 545,
+      "simplifierError": 0.0014846866251900792
+    },
+    {
+      "mesh": "front_wing_bottom__01",
+      "primitive": 1,
+      "trianglesBefore": 2080,
+      "trianglesAfter": 670,
+      "verticesBefore": 1220,
+      "verticesAfter": 469,
+      "simplifierError": 0.0014916728250682354
+    },
+    {
+      "mesh": "front_wing_middle__01",
+      "primitive": 0,
+      "trianglesBefore": 2368,
+      "trianglesAfter": 706,
+      "verticesBefore": 1303,
+      "verticesAfter": 445,
+      "simplifierError": 0.0014944040449336171
+    },
+    {
+      "mesh": "front_wing_middle__01",
+      "primitive": 1,
+      "trianglesBefore": 2368,
+      "trianglesAfter": 716,
+      "verticesBefore": 1335,
+      "verticesAfter": 456,
+      "simplifierError": 0.0014605652540922165
+    },
+    {
+      "mesh": "front_wing_top__01",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 700,
+      "verticesBefore": 1514,
+      "verticesAfter": 472,
+      "simplifierError": 0.0014545154990628362
+    },
+    {
+      "mesh": "front_wing_top__01",
+      "primitive": 1,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 762,
+      "verticesBefore": 1552,
+      "verticesAfter": 543,
+      "simplifierError": 0.0014926692238077521
+    },
+    {
+      "mesh": "front_wing_mounts__01",
+      "primitive": 0,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 1070,
+      "verticesBefore": 642,
+      "verticesAfter": 537,
+      "simplifierError": 0.0014950637705624104
+    },
+    {
+      "mesh": "front_wing_mounts__02",
+      "primitive": 0,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 1052,
+      "verticesBefore": 642,
+      "verticesAfter": 528,
+      "simplifierError": 0.001488705980591476
+    },
+    {
+      "mesh": "front_wing_mounts__03",
+      "primitive": 0,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 1052,
+      "verticesBefore": 642,
+      "verticesAfter": 528,
+      "simplifierError": 0.001499745063483715
+    },
+    {
+      "mesh": "front_wing_mounts__04",
+      "primitive": 0,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 1066,
+      "verticesBefore": 642,
+      "verticesAfter": 535,
+      "simplifierError": 0.0014996071113273501
+    },
+    {
+      "mesh": "main_body__01",
+      "primitive": 0,
+      "trianglesBefore": 72186,
+      "trianglesAfter": 18046,
+      "verticesBefore": 37644,
+      "verticesAfter": 10132,
+      "simplifierError": 0.0001494893222115934
+    },
+    {
+      "mesh": "main_body__01",
+      "primitive": 1,
+      "trianglesBefore": 35220,
+      "trianglesAfter": 8804,
+      "verticesBefore": 19181,
+      "verticesAfter": 5564,
+      "simplifierError": 0.0002069562760880217
+    },
+    {
+      "mesh": "floor__01",
+      "primitive": 0,
+      "trianglesBefore": 27216,
+      "trianglesAfter": 6804,
+      "verticesBefore": 13732,
+      "verticesAfter": 3526,
+      "simplifierError": 0.0007717983680777252
+    },
+    {
+      "mesh": "floor__02",
+      "primitive": 0,
+      "trianglesBefore": 2816,
+      "trianglesAfter": 770,
+      "verticesBefore": 1410,
+      "verticesAfter": 387,
+      "simplifierError": 0.001494868309237063
+    },
+    {
+      "mesh": "floor__03",
+      "primitive": 0,
+      "trianglesBefore": 2816,
+      "trianglesAfter": 770,
+      "verticesBefore": 1410,
+      "verticesAfter": 387,
+      "simplifierError": 0.001497311401180923
+    },
+    {
+      "mesh": "rear_led__01",
+      "primitive": 0,
+      "trianglesBefore": 1152,
+      "trianglesAfter": 742,
+      "verticesBefore": 800,
+      "verticesAfter": 551,
+      "simplifierError": 0.0014935714425519109
+    },
+    {
+      "mesh": "rear_led__01",
+      "primitive": 1,
+      "trianglesBefore": 96,
+      "trianglesAfter": 96,
+      "verticesBefore": 69,
+      "verticesAfter": 69,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "exhaust__01",
+      "primitive": 0,
+      "trianglesBefore": 7808,
+      "trianglesAfter": 1952,
+      "verticesBefore": 3937,
+      "verticesAfter": 1009,
+      "simplifierError": 0.0007977866334840655
+    },
+    {
+      "mesh": "top_intake_details__01",
+      "primitive": 0,
+      "trianglesBefore": 6784,
+      "trianglesAfter": 3726,
+      "verticesBefore": 3413,
+      "verticesAfter": 1884,
+      "simplifierError": 0.0014643896138295531
+    },
+    {
+      "mesh": "top_intake_details__02",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 1840,
+      "verticesBefore": 1365,
+      "verticesAfter": 941,
+      "simplifierError": 0.0014843883691355586
+    },
+    {
+      "mesh": "top_intake_details__03",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 1842,
+      "verticesBefore": 1365,
+      "verticesAfter": 942,
+      "simplifierError": 0.0014999874401837587
+    },
+    {
+      "mesh": "antennas__01",
+      "primitive": 0,
+      "trianglesBefore": 7440,
+      "trianglesAfter": 1860,
+      "verticesBefore": 3753,
+      "verticesAfter": 963,
+      "simplifierError": 0.00045627003419212997
+    },
+    {
+      "mesh": "antennas__02",
+      "primitive": 0,
+      "trianglesBefore": 5760,
+      "trianglesAfter": 1440,
+      "verticesBefore": 2913,
+      "verticesAfter": 753,
+      "simplifierError": 0.0011183088645339012
+    },
+    {
+      "mesh": "antennas__03",
+      "primitive": 0,
+      "trianglesBefore": 5760,
+      "trianglesAfter": 1440,
+      "verticesBefore": 2913,
+      "verticesAfter": 753,
+      "simplifierError": 0.001140219857916236
+    },
+    {
+      "mesh": "antennas__04",
+      "primitive": 0,
+      "trianglesBefore": 1984,
+      "trianglesAfter": 776,
+      "verticesBefore": 994,
+      "verticesAfter": 390,
+      "simplifierError": 0.0014966768212616444
+    },
+    {
+      "mesh": "side_mirrors__L_01",
+      "primitive": 0,
+      "trianglesBefore": 4928,
+      "trianglesAfter": 1962,
+      "verticesBefore": 2784,
+      "verticesAfter": 1144,
+      "simplifierError": 0.0014779713237658143
+    },
+    {
+      "mesh": "side_mirrors__L_01",
+      "primitive": 1,
+      "trianglesBefore": 288,
+      "trianglesAfter": 288,
+      "verticesBefore": 169,
+      "verticesAfter": 169,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "side_mirrors__R_01",
+      "primitive": 0,
+      "trianglesBefore": 4928,
+      "trianglesAfter": 1978,
+      "verticesBefore": 2784,
+      "verticesAfter": 1152,
+      "simplifierError": 0.0014628709759563208
+    },
+    {
+      "mesh": "side_mirrors__R_01",
+      "primitive": 1,
+      "trianglesBefore": 288,
+      "trianglesAfter": 288,
+      "verticesBefore": 169,
+      "verticesAfter": 169,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "front_wing_mount__01",
+      "primitive": 0,
+      "trianglesBefore": 256,
+      "trianglesAfter": 256,
+      "verticesBefore": 160,
+      "verticesAfter": 160,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "front_wing_mount__02",
+      "primitive": 0,
+      "trianglesBefore": 256,
+      "trianglesAfter": 256,
+      "verticesBefore": 160,
+      "verticesAfter": 160,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "main_body_inside__01",
+      "primitive": 0,
+      "trianglesBefore": 25344,
+      "trianglesAfter": 6336,
+      "verticesBefore": 12777,
+      "verticesAfter": 3273,
+      "simplifierError": 0.00023238141147885472
+    },
+    {
+      "mesh": "main_body_inside__02",
+      "primitive": 0,
+      "trianglesBefore": 1536,
+      "trianglesAfter": 384,
+      "verticesBefore": 864,
+      "verticesAfter": 288,
+      "simplifierError": 0.00021494932298082858
+    },
+    {
+      "mesh": "main_body_glass__01",
+      "primitive": 0,
+      "trianglesBefore": 4224,
+      "trianglesAfter": 1738,
+      "verticesBefore": 2114,
+      "verticesAfter": 871,
+      "simplifierError": 0.001489804359152913
+    },
+    {
+      "mesh": "front_flap_detail__01",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 1686,
+      "verticesBefore": 1365,
+      "verticesAfter": 864,
+      "simplifierError": 0.001499928068369627
+    },
+    {
+      "mesh": "front_flap_detail__02",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 1698,
+      "verticesBefore": 1365,
+      "verticesAfter": 870,
+      "simplifierError": 0.0014762897044420242
+    },
+    {
+      "mesh": "front_wheel_cover__L_01",
+      "primitive": 0,
+      "trianglesBefore": 32480,
+      "trianglesAfter": 8120,
+      "verticesBefore": 17414,
+      "verticesAfter": 4578,
+      "simplifierError": 0.0004800706810783595
+    },
+    {
+      "mesh": "front_wheel_cover__L_02",
+      "primitive": 0,
+      "trianglesBefore": 15928,
+      "trianglesAfter": 3982,
+      "verticesBefore": 8499,
+      "verticesAfter": 2337,
+      "simplifierError": 0.001005806028842926
+    },
+    {
+      "mesh": "front_wheel_cover__L_03",
+      "primitive": 0,
+      "trianglesBefore": 5712,
+      "trianglesAfter": 1626,
+      "verticesBefore": 3030,
+      "verticesAfter": 900,
+      "simplifierError": 0.0014756785240024328
+    },
+    {
+      "mesh": "front_wheel_cover__L_03",
+      "primitive": 1,
+      "trianglesBefore": 7392,
+      "trianglesAfter": 2854,
+      "verticesBefore": 3864,
+      "verticesAfter": 1595,
+      "simplifierError": 0.0014638407155871391
+    },
+    {
+      "mesh": "front_wheel_cover__L_04",
+      "primitive": 0,
+      "trianglesBefore": 7448,
+      "trianglesAfter": 3274,
+      "verticesBefore": 3918,
+      "verticesAfter": 1803,
+      "simplifierError": 0.0014916615327820182
+    },
+    {
+      "mesh": "front_wheel_cover__R_01",
+      "primitive": 0,
+      "trianglesBefore": 32480,
+      "trianglesAfter": 8120,
+      "verticesBefore": 17414,
+      "verticesAfter": 4583,
+      "simplifierError": 0.0004804556374438107
+    },
+    {
+      "mesh": "front_wheel_cover__R_02",
+      "primitive": 0,
+      "trianglesBefore": 15928,
+      "trianglesAfter": 3982,
+      "verticesBefore": 8499,
+      "verticesAfter": 2335,
+      "simplifierError": 0.0010064579546451569
+    },
+    {
+      "mesh": "front_wheel_cover__R_03",
+      "primitive": 0,
+      "trianglesBefore": 5712,
+      "trianglesAfter": 1618,
+      "verticesBefore": 3030,
+      "verticesAfter": 900,
+      "simplifierError": 0.001491648843511939
+    },
+    {
+      "mesh": "front_wheel_cover__R_03",
+      "primitive": 1,
+      "trianglesBefore": 7392,
+      "trianglesAfter": 2890,
+      "verticesBefore": 3864,
+      "verticesAfter": 1613,
+      "simplifierError": 0.001496580895036459
+    },
+    {
+      "mesh": "front_wheel_cover__R_04",
+      "primitive": 0,
+      "trianglesBefore": 7448,
+      "trianglesAfter": 3342,
+      "verticesBefore": 3918,
+      "verticesAfter": 1837,
+      "simplifierError": 0.0014978215331211686
+    },
+    {
+      "mesh": "front_tire__01",
+      "primitive": 0,
+      "trianglesBefore": 8736,
+      "trianglesAfter": 4810,
+      "verticesBefore": 4536,
+      "verticesAfter": 2573,
+      "simplifierError": 0.0014887703582644463
+    },
+    {
+      "mesh": "front_tire__02",
+      "primitive": 0,
+      "trianglesBefore": 8736,
+      "trianglesAfter": 4866,
+      "verticesBefore": 4536,
+      "verticesAfter": 2601,
+      "simplifierError": 0.0014735306613147259
+    },
+    {
+      "mesh": "inside_cover__01",
+      "primitive": 0,
+      "trianglesBefore": 10344,
+      "trianglesAfter": 3548,
+      "verticesBefore": 5215,
+      "verticesAfter": 1817,
+      "simplifierError": 0.0014937467640265822
+    },
+    {
+      "mesh": "inside_cover__02",
+      "primitive": 0,
+      "trianglesBefore": 10344,
+      "trianglesAfter": 3472,
+      "verticesBefore": 5215,
+      "verticesAfter": 1779,
+      "simplifierError": 0.0014999461127445102
+    },
+    {
+      "mesh": "rear_wheel_cover__L_01",
+      "primitive": 0,
+      "trianglesBefore": 32480,
+      "trianglesAfter": 8120,
+      "verticesBefore": 17414,
+      "verticesAfter": 4578,
+      "simplifierError": 0.0004800706810783595
+    },
+    {
+      "mesh": "rear_wheel_cover__L_02",
+      "primitive": 0,
+      "trianglesBefore": 15928,
+      "trianglesAfter": 3982,
+      "verticesBefore": 8499,
+      "verticesAfter": 2335,
+      "simplifierError": 0.0010056337341666222
+    },
+    {
+      "mesh": "rear_wheel_cover__L_03",
+      "primitive": 0,
+      "trianglesBefore": 5712,
+      "trianglesAfter": 1626,
+      "verticesBefore": 3030,
+      "verticesAfter": 900,
+      "simplifierError": 0.0014756785240024328
+    },
+    {
+      "mesh": "rear_wheel_cover__L_03",
+      "primitive": 1,
+      "trianglesBefore": 7392,
+      "trianglesAfter": 2852,
+      "verticesBefore": 3864,
+      "verticesAfter": 1594,
+      "simplifierError": 0.0014691323740407825
+    },
+    {
+      "mesh": "rear_wheel_cover__L_04",
+      "primitive": 0,
+      "trianglesBefore": 7448,
+      "trianglesAfter": 3274,
+      "verticesBefore": 3918,
+      "verticesAfter": 1803,
+      "simplifierError": 0.0014916615327820182
+    },
+    {
+      "mesh": "rear_wheel_cover__R_01",
+      "primitive": 0,
+      "trianglesBefore": 32480,
+      "trianglesAfter": 8120,
+      "verticesBefore": 17414,
+      "verticesAfter": 4583,
+      "simplifierError": 0.0004804556374438107
+    },
+    {
+      "mesh": "rear_wheel_cover__R_02",
+      "primitive": 0,
+      "trianglesBefore": 15928,
+      "trianglesAfter": 3982,
+      "verticesBefore": 8499,
+      "verticesAfter": 2336,
+      "simplifierError": 0.001006543287076056
+    },
+    {
+      "mesh": "rear_wheel_cover__R_03",
+      "primitive": 0,
+      "trianglesBefore": 5712,
+      "trianglesAfter": 1618,
+      "verticesBefore": 3030,
+      "verticesAfter": 900,
+      "simplifierError": 0.001491648843511939
+    },
+    {
+      "mesh": "rear_wheel_cover__R_03",
+      "primitive": 1,
+      "trianglesBefore": 7392,
+      "trianglesAfter": 2902,
+      "verticesBefore": 3864,
+      "verticesAfter": 1619,
+      "simplifierError": 0.0014912349870428443
+    },
+    {
+      "mesh": "rear_wheel_cover__R_04",
+      "primitive": 0,
+      "trianglesBefore": 7448,
+      "trianglesAfter": 3342,
+      "verticesBefore": 3918,
+      "verticesAfter": 1837,
+      "simplifierError": 0.0014978215331211686
+    },
+    {
+      "mesh": "rear_tire__01",
+      "primitive": 0,
+      "trianglesBefore": 8736,
+      "trianglesAfter": 4706,
+      "verticesBefore": 4536,
+      "verticesAfter": 2521,
+      "simplifierError": 0.0014999756822362542
+    },
+    {
+      "mesh": "rear_tire__02",
+      "primitive": 0,
+      "trianglesBefore": 8736,
+      "trianglesAfter": 4774,
+      "verticesBefore": 4536,
+      "verticesAfter": 2555,
+      "simplifierError": 0.00149467121809721
+    },
+    {
+      "mesh": "rear_inside_cover__01",
+      "primitive": 0,
+      "trianglesBefore": 10344,
+      "trianglesAfter": 3494,
+      "verticesBefore": 5215,
+      "verticesAfter": 1790,
+      "simplifierError": 0.0014934208011254668
+    },
+    {
+      "mesh": "rear_inside_cover__02",
+      "primitive": 0,
+      "trianglesBefore": 10344,
+      "trianglesAfter": 3484,
+      "verticesBefore": 5215,
+      "verticesAfter": 1785,
+      "simplifierError": 0.0014982227003201842
+    },
+    {
+      "mesh": "front_control_arms__L_01",
+      "primitive": 0,
+      "trianglesBefore": 2592,
+      "trianglesAfter": 930,
+      "verticesBefore": 1335,
+      "verticesAfter": 504,
+      "simplifierError": 0.0014927495503798127
+    },
+    {
+      "mesh": "front_control_arms__L_01",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 666,
+      "verticesBefore": 720,
+      "verticesAfter": 413,
+      "simplifierError": 0.0014976762467995286
+    },
+    {
+      "mesh": "front_control_arms__L_02",
+      "primitive": 0,
+      "trianglesBefore": 2400,
+      "trianglesAfter": 844,
+      "verticesBefore": 1239,
+      "verticesAfter": 461,
+      "simplifierError": 0.0014722754713147879
+    },
+    {
+      "mesh": "front_control_arms__L_02",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 572,
+      "verticesBefore": 720,
+      "verticesAfter": 366,
+      "simplifierError": 0.001489619491621852
+    },
+    {
+      "mesh": "front_control_arms__R_01",
+      "primitive": 0,
+      "trianglesBefore": 2592,
+      "trianglesAfter": 912,
+      "verticesBefore": 1335,
+      "verticesAfter": 495,
+      "simplifierError": 0.0014940317487344146
+    },
+    {
+      "mesh": "front_control_arms__R_01",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 664,
+      "verticesBefore": 720,
+      "verticesAfter": 412,
+      "simplifierError": 0.0014943726127967238
+    },
+    {
+      "mesh": "front_control_arms__R_02",
+      "primitive": 0,
+      "trianglesBefore": 2400,
+      "trianglesAfter": 848,
+      "verticesBefore": 1239,
+      "verticesAfter": 463,
+      "simplifierError": 0.0014959274558350444
+    },
+    {
+      "mesh": "front_control_arms__R_02",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 574,
+      "verticesBefore": 720,
+      "verticesAfter": 367,
+      "simplifierError": 0.0014735726872459054
+    },
+    {
+      "mesh": "front_pushrod__L_01",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 662,
+      "verticesBefore": 1440,
+      "verticesAfter": 439,
+      "simplifierError": 0.0007677819230593741
+    },
+    {
+      "mesh": "front_pushrod__L_02",
+      "primitive": 0,
+      "trianglesBefore": 1920,
+      "trianglesAfter": 862,
+      "verticesBefore": 1008,
+      "verticesAfter": 479,
+      "simplifierError": 0.0014896971406415105
+    },
+    {
+      "mesh": "front_pushrod__L_02",
+      "primitive": 1,
+      "trianglesBefore": 1536,
+      "trianglesAfter": 384,
+      "verticesBefore": 864,
+      "verticesAfter": 288,
+      "simplifierError": 0.0012560347095131874
+    },
+    {
+      "mesh": "front_pushrod__R_01",
+      "primitive": 0,
+      "trianglesBefore": 1920,
+      "trianglesAfter": 856,
+      "verticesBefore": 1008,
+      "verticesAfter": 476,
+      "simplifierError": 0.0014526854502037168
+    },
+    {
+      "mesh": "front_pushrod__R_01",
+      "primitive": 1,
+      "trianglesBefore": 1536,
+      "trianglesAfter": 384,
+      "verticesBefore": 864,
+      "verticesAfter": 288,
+      "simplifierError": 0.0012627518735826015
+    },
+    {
+      "mesh": "front_pushrod__R_02",
+      "primitive": 0,
+      "trianglesBefore": 2688,
+      "trianglesAfter": 667,
+      "verticesBefore": 1440,
+      "verticesAfter": 441,
+      "simplifierError": 0.0007490445859730244
+    },
+    {
+      "mesh": "rear_control_arms__L_01",
+      "primitive": 0,
+      "trianglesBefore": 1760,
+      "trianglesAfter": 1036,
+      "verticesBefore": 919,
+      "verticesAfter": 557,
+      "simplifierError": 0.0014964635483920574
+    },
+    {
+      "mesh": "rear_control_arms__L_01",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 814,
+      "verticesBefore": 720,
+      "verticesAfter": 487,
+      "simplifierError": 0.0014975211815908551
+    },
+    {
+      "mesh": "rear_control_arms__L_02",
+      "primitive": 0,
+      "trianglesBefore": 1760,
+      "trianglesAfter": 992,
+      "verticesBefore": 919,
+      "verticesAfter": 535,
+      "simplifierError": 0.0014951591147109866
+    },
+    {
+      "mesh": "rear_control_arms__L_02",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 722,
+      "verticesBefore": 720,
+      "verticesAfter": 441,
+      "simplifierError": 0.0014985231682658195
+    },
+    {
+      "mesh": "rear_control_arms__R_01",
+      "primitive": 0,
+      "trianglesBefore": 1760,
+      "trianglesAfter": 1038,
+      "verticesBefore": 919,
+      "verticesAfter": 558,
+      "simplifierError": 0.001496560638770461
+    },
+    {
+      "mesh": "rear_control_arms__R_01",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 818,
+      "verticesBefore": 720,
+      "verticesAfter": 489,
+      "simplifierError": 0.001497442601248622
+    },
+    {
+      "mesh": "rear_control_arms__R_02",
+      "primitive": 0,
+      "trianglesBefore": 1760,
+      "trianglesAfter": 996,
+      "verticesBefore": 919,
+      "verticesAfter": 537,
+      "simplifierError": 0.0014891143655404449
+    },
+    {
+      "mesh": "rear_control_arms__R_02",
+      "primitive": 1,
+      "trianglesBefore": 1280,
+      "trianglesAfter": 714,
+      "verticesBefore": 720,
+      "verticesAfter": 437,
+      "simplifierError": 0.0014960505068302155
+    },
+    {
+      "mesh": "rear_driveshaft__L_01",
+      "primitive": 0,
+      "trianglesBefore": 4704,
+      "trianglesAfter": 3038,
+      "verticesBefore": 2377,
+      "verticesAfter": 1544,
+      "simplifierError": 0.0014866279670968652
+    },
+    {
+      "mesh": "rear_driveshaft__L_01",
+      "primitive": 1,
+      "trianglesBefore": 384,
+      "trianglesAfter": 384,
+      "verticesBefore": 240,
+      "verticesAfter": 240,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "rear_driveshaft__L_02",
+      "primitive": 0,
+      "trianglesBefore": 3936,
+      "trianglesAfter": 2308,
+      "verticesBefore": 1993,
+      "verticesAfter": 1179,
+      "simplifierError": 0.0014737711753696203
+    },
+    {
+      "mesh": "rear_driveshaft__L_02",
+      "primitive": 1,
+      "trianglesBefore": 768,
+      "trianglesAfter": 622,
+      "verticesBefore": 432,
+      "verticesAfter": 359,
+      "simplifierError": 0.00141548877581954
+    },
+    {
+      "mesh": "rear_driveshaft__L_03",
+      "primitive": 0,
+      "trianglesBefore": 2304,
+      "trianglesAfter": 736,
+      "verticesBefore": 1200,
+      "verticesAfter": 416,
+      "simplifierError": 0.0014754317235201597
+    },
+    {
+      "mesh": "rear_driveshaft__L_03",
+      "primitive": 1,
+      "trianglesBefore": 768,
+      "trianglesAfter": 672,
+      "verticesBefore": 432,
+      "verticesAfter": 384,
+      "simplifierError": 0.0010630701435729861
+    },
+    {
+      "mesh": "rear_driveshaft__R_01",
+      "primitive": 0,
+      "trianglesBefore": 4704,
+      "trianglesAfter": 3028,
+      "verticesBefore": 2377,
+      "verticesAfter": 1539,
+      "simplifierError": 0.001457317266613245
+    },
+    {
+      "mesh": "rear_driveshaft__R_01",
+      "primitive": 1,
+      "trianglesBefore": 384,
+      "trianglesAfter": 384,
+      "verticesBefore": 240,
+      "verticesAfter": 240,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "rear_driveshaft__R_02",
+      "primitive": 0,
+      "trianglesBefore": 3936,
+      "trianglesAfter": 2324,
+      "verticesBefore": 1993,
+      "verticesAfter": 1187,
+      "simplifierError": 0.0014853181783109903
+    },
+    {
+      "mesh": "rear_driveshaft__R_02",
+      "primitive": 1,
+      "trianglesBefore": 768,
+      "trianglesAfter": 618,
+      "verticesBefore": 432,
+      "verticesAfter": 357,
+      "simplifierError": 0.0014173381496220827
+    },
+    {
+      "mesh": "rear_driveshaft__R_03",
+      "primitive": 0,
+      "trianglesBefore": 2304,
+      "trianglesAfter": 744,
+      "verticesBefore": 1200,
+      "verticesAfter": 420,
+      "simplifierError": 0.0014993331860750914
+    },
+    {
+      "mesh": "rear_driveshaft__R_03",
+      "primitive": 1,
+      "trianglesBefore": 768,
+      "trianglesAfter": 672,
+      "verticesBefore": 432,
+      "verticesAfter": 384,
+      "simplifierError": 0.0011162272421643138
+    },
+    {
+      "mesh": "new_rear_LED__01",
+      "primitive": 0,
+      "trianglesBefore": 4440,
+      "trianglesAfter": 2526,
+      "verticesBefore": 4480,
+      "verticesAfter": 2566,
+      "simplifierError": 0.0013981402153149247
+    },
+    {
+      "mesh": "new_rear_LED__01",
+      "primitive": 1,
+      "trianglesBefore": 2480,
+      "trianglesAfter": 1200,
+      "verticesBefore": 2560,
+      "verticesAfter": 1280,
+      "simplifierError": 0.0013776784762740135
+    },
+    {
+      "mesh": "lcd_screen__01",
+      "primitive": 0,
+      "trianglesBefore": 2,
+      "trianglesAfter": 2,
+      "verticesBefore": 4,
+      "verticesAfter": 4,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "steering_wheel_buttons__01",
+      "primitive": 0,
+      "trianglesBefore": 15088,
+      "trianglesAfter": 6942,
+      "verticesBefore": 13450,
+      "verticesAfter": 8424,
+      "simplifierError": 0.00149164954200387
+    },
+    {
+      "mesh": "steering_wheel_buttons__01",
+      "primitive": 1,
+      "trianglesBefore": 6060,
+      "trianglesAfter": 1514,
+      "verticesBefore": 3200,
+      "verticesAfter": 927,
+      "simplifierError": 0.001356686931103468
+    },
+    {
+      "mesh": "steering_wheel_handles__01",
+      "primitive": 0,
+      "trianglesBefore": 5128,
+      "trianglesAfter": 2828,
+      "verticesBefore": 2566,
+      "verticesAfter": 1416,
+      "simplifierError": 0.001499841338954866
+    },
+    {
+      "mesh": "steering_wheel_handles__02",
+      "primitive": 0,
+      "trianglesBefore": 5128,
+      "trianglesAfter": 2856,
+      "verticesBefore": 2566,
+      "verticesAfter": 1430,
+      "simplifierError": 0.0014749087858945131
+    },
+    {
+      "mesh": "steering_wheel_leds__01",
+      "primitive": 0,
+      "trianglesBefore": 1138,
+      "trianglesAfter": 514,
+      "verticesBefore": 624,
+      "verticesAfter": 312,
+      "simplifierError": 0.0014554925728589296
+    },
+    {
+      "mesh": "steering_wheel_leds__01",
+      "primitive": 1,
+      "trianglesBefore": 12060,
+      "trianglesAfter": 3014,
+      "verticesBefore": 6336,
+      "verticesAfter": 1813,
+      "simplifierError": 0.0007635368383489549
+    },
+    {
+      "mesh": "steering_wheel_main__01",
+      "primitive": 0,
+      "trianglesBefore": 7026,
+      "trianglesAfter": 3258,
+      "verticesBefore": 4783,
+      "verticesAfter": 2711,
+      "simplifierError": 0.0014984565787017345
+    },
+    {
+      "mesh": "steering_wheel_main__01",
+      "primitive": 1,
+      "trianglesBefore": 1632,
+      "trianglesAfter": 828,
+      "verticesBefore": 950,
+      "verticesAfter": 540,
+      "simplifierError": 0.0014511113986372948
+    },
+    {
+      "mesh": "sw_connection__01",
+      "primitive": 0,
+      "trianglesBefore": 1856,
+      "trianglesAfter": 1856,
+      "verticesBefore": 1257,
+      "verticesAfter": 1257,
+      "simplifierError": 0
+    },
+    {
+      "mesh": "sw_connection__02",
+      "primitive": 0,
+      "trianglesBefore": 414,
+      "trianglesAfter": 414,
+      "verticesBefore": 398,
+      "verticesAfter": 398,
+      "simplifierError": 0
+    }
+  ]
+}
