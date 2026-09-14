@@ -286,7 +286,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     }
 
     // The car stays assembled in chapter 07: only the engine cover lifts (in-car.js), after mechanics rewrote the parts.
-    mechanics.setAmount(pose.explode);
+    mechanics.setAmount(pose.explode*(1-engineZoom));
     mechanics.setSpin(t > .01);
     mechanics.update(dt * (1 + 20 * t), time * 1000, true);
     inCarEngine.update(dt,engineTake,pose.enginePaused);
@@ -465,4 +465,5 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     dispose() { inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
   };
 }
+
 
