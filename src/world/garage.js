@@ -675,18 +675,18 @@ export function createGarage({renderer, scene, mobile = false} = {}) {
     const m = 52 * s;
     const cards = [
       {title:'O QUE O TESTE MOSTROU', lines:['12 → 9 min'], detail:['Mediana de atendimento', '50 pedidos em cada versão'], source:'REGISTRO · FRASE 2'},
-      {title:'O QUE MUDOU JUNTO', lines:['FORMULÁRIO', '+ EQUIPE'], detail:['Duas mudanças no mesmo teste.'], source:'REGISTRO · FRASE 3'},
-      {title:'SÍNTESE DO TESTE', lines:['REDUÇÃO OBSERVADA', '12 → 9 MIN'], detail:['Formulário e equipe mudaram juntos'], source:'REGISTRO · FRASES 2 E 3'},
+      {title:'O QUE MUDOU JUNTO', lines:['FORMULÁRIO', '+ EQUIPE'], detail:['Duas mudanças juntas.'], source:'REGISTRO · FRASE 3'},
+      {title:'SÍNTESE DO TESTE', lines:['REDUÇÃO OBSERVADA', '12 → 9 MIN'], detail:['Formulário + equipe'], source:'REGISTRO · FRASES 2 E 3'},
     ];
     const card = cards[lessonBeat];
     ctx.textAlign='left';ctx.textBaseline='alphabetic';
-    ctx.fillStyle='#8ea6b4';ctx.font=`600 ${30*s}px ${BODY}`;
+    ctx.fillStyle='#8ea6b4';ctx.font=`600 ${38*s}px ${BODY}`;
     ctx.fillText(card.title,m,78*s);
     ctx.fillStyle='#ffd447';ctx.font=`${(lessonBeat===0?174:lessonBeat===1?108:86)*s}px ${DISPLAY}`;
     card.lines.forEach((line,i)=>ctx.fillText(line,m,(lessonBeat===0?292:244+i*102)*s));
-    ctx.fillStyle='#eef3f6';ctx.font=`${38*s}px ${BODY}`;
+    ctx.fillStyle='#eef3f6';ctx.font=`${48*s}px ${BODY}`;
     card.detail.forEach((line,i)=>ctx.fillText(line,m,(410+i*48)*s));
-    ctx.fillStyle='#8ea6b4';ctx.font=`${22*s}px ${BODY}`;
+    ctx.fillStyle='#8ea6b4';ctx.font=`${30*s}px ${BODY}`;
     ctx.fillText(card.source,m,540*s);
     for(let i=0;i<3;i++){
       ctx.fillStyle=i===lessonBeat?'#ffd447':'#34414a';

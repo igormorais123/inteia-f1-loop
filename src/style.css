@@ -110,3 +110,34 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
 #finish-caption a{display:none}.finale-crossed #finish-caption a{display:inline-block}
 .enhanced:not(.reading).engine-returning .engine-chapter-copy{opacity:0;pointer-events:none}
 .reading #finish-caption{display:none}
+/* Projection: short points, large secondary text and controls. */
+.enhanced:not(.reading) .lead,.lecture-points{font-size:clamp(24px,1.9vw,30px);line-height:1.4;max-width:550px;color:#f0f2f3}
+.lecture-points{padding-left:1.1em;margin:20px 0 24px}.lecture-points li+li{margin-top:.3em}.lecture-points li::marker{color:#ff6572}
+.enhanced:not(.reading) .eyebrow,.engine-chapter-copy .eyebrow,#engine-part-label{font-size:16px;letter-spacing:1px}
+.enhanced .primary,.enhanced .secondary,.enhanced .restart,.enhanced .lesson summary,.enhanced .lesson-close{font-size:18px;line-height:1.35}
+.header-actions button{font-size:16px}.brand span{font-size:13px}
+.chapters-nav span{font-size:14px}footer,#scene-label,#load-state,.footer-title{font-size:13px}
+#engine-chapter-text{white-space:pre-line;font-size:clamp(23px,1.8vw,28px);line-height:1.55;color:#f0f2f3}
+.enhanced:not(.reading) .engine-chapter-copy{width:36%;max-width:530px}
+#engine-source{font-size:16px}
+.enhanced:not(.reading) .monitor-scene-controls button,.enhanced:not(.reading) .engine-chapter-controls button{font-size:18px;line-height:1.3;min-height:48px}
+.engine-chapter-controls span,#monitor-page{font-size:16px}
+.enhanced:not(.reading).finale-running #finish-caption{font-size:22px}
+.enhanced dialog p,.enhanced dialog label,.enhanced dialog textarea,.enhanced dialog select,.enhanced dialog summary,.enhanced dialog button,.enhanced dialog legend,.enhanced dialog .small,.enhanced #storage-state{font-size:20px;line-height:1.5}
+.enhanced dialog .lr-lab,.enhanced dialog .lr-lab li,.enhanced dialog .lr-lab label,.enhanced dialog .lr-lab summary{font-size:20px}
+.enhanced dialog .lr-tag,.enhanced dialog .lr-progress,.enhanced dialog .lr-record,.enhanced .f1-note a,.enhanced .f1-note span{font-size:16px}
+.enhanced .lesson p{font-size:20px;line-height:1.5}.enhanced .lesson a{font-size:16px}
+@media(max-width:760px){
+ .header-actions button{font-size:14px;padding:8px 5px}.brand img{width:85px}.brand span{display:none}
+ .enhanced:not(.reading) .lead,.lecture-points{font-size:19px;line-height:1.4;margin:12px 0 16px}
+ .enhanced:not(.reading) .chapter-inner,.enhanced:not(.reading) #encerrar .chapter-inner{padding-top:41svh}
+ .enhanced:not(.reading) .eyebrow,.engine-chapter-copy .eyebrow,#engine-part-label{font-size:14px}
+ .enhanced .primary,.enhanced .secondary,.enhanced .restart,.enhanced .lesson summary{font-size:16px}
+ .enhanced:not(.reading) .engine-chapter-copy{width:100%;margin-top:32svh}
+ #engine-chapter-text{font-size:19px;line-height:1.45}#engine-source{font-size:14px}
+ .enhanced:not(.reading) .engine-chapter-controls,.enhanced:not(.reading) .monitor-scene-controls{gap:12px!important;flex-wrap:wrap}
+ .enhanced:not(.reading) .engine-chapter-controls button,.enhanced:not(.reading) .monitor-scene-controls button{font-size:16px;padding:8px 2px}
+ .engine-chapter-controls span,#monitor-page{font-size:14px}
+ .enhanced dialog p,.enhanced dialog label,.enhanced dialog textarea,.enhanced dialog select,.enhanced dialog summary,.enhanced dialog button,.enhanced dialog legend,.enhanced dialog .small,.enhanced #storage-state,.enhanced dialog .lr-lab,.enhanced dialog .lr-lab li,.enhanced dialog .lr-lab label,.enhanced dialog .lr-lab summary{font-size:18px}
+ .chapters-nav{gap:12px}.chapters-nav span{font-size:13px}#scene-label,.footer-title{font-size:12px}
+}
