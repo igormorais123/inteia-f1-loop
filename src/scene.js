@@ -1,3 +1,4 @@
+import {createSennaDriver} from './senna-driver.js';
 import {createFinishLine} from './finale.js';
 import {createInCarEngine} from './engine/in-car.js';
 import {engineShot} from './engine/engine-shot.js';
@@ -145,6 +146,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
   stage.dataset.surfaceDetails = String(detailedMaterials.size);
   // Wheel machining and artwork authored by the other execution refine these base maps.
   const carLook = enhanceCar({model, mechanics, mobile});
+  const driver = createSennaDriver(model, mechanics);
   // The finish pass runs last so its art direction is the final word on the car materials.
   let triangles = 0;
   const offsetScale = new THREE.Vector3();
@@ -319,6 +321,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     carLook.race(run, braking, time);
     floor.set(pose.highlight, time, pose.index);
     carLook.update(dt, time, pose);
+    driver.update();
     choreo.update(dt, time, pose);
     blobMaterial.opacity = .85 * (1 - smooth(pose.explode * 4));
 
@@ -478,7 +481,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
       if (!stage.dataset.loaded) { stage.dataset.loaded = 'true'; stage.classList.add('loaded'); }
       adapt(time * 1000, budgetMs);
     },
-    dispose() { finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
+    dispose() { driver.dispose();finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
   };
 }
 
