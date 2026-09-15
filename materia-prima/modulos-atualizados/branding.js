@@ -5,12 +5,13 @@ import {DecalGeometry} from 'three/addons/geometries/DecalGeometry.js';
 export async function applyInteiaBranding(model, mechanics) {
   // Approved vector artwork: preserve the original contours, palette and transparent exterior.
   const loader=new THREE.TextureLoader();
-  const [map,crestMap]=await Promise.all(['inteia-nome-oficial.svg','inteia-escudo-oficial.svg'].map(name=>loader.loadAsync(`${import.meta.env.BASE_URL}assets/${name}`)));
-  for(const t of [map,crestMap]){t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;}
+  const [map,crestMap,sponsorMap]=await Promise.all(['inteia-nome-oficial.svg','inteia-escudo-oficial.svg','inteligencia-mil-grau.jpg'].map(name=>loader.loadAsync(`${import.meta.env.BASE_URL}assets/${name}`)));
+  for(const t of [map,crestMap,sponsorMap]){t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;}
   const aspect=910.78125/210;
   const options={roughness:.35,metalness:.05,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-4};
   const material=new THREE.MeshStandardMaterial({...options,name:'INTEIA | assinatura oficial',map});
   const crestMaterial=new THREE.MeshStandardMaterial({...options,name:'INTEIA | brasão oficial SVG',map:crestMap});
+  const sponsorMaterial=new THREE.MeshStandardMaterial({...options,name:'Bob | Inteligência Mil Grau',map:sponsorMap});
   const numberCanvas=document.createElement('canvas');numberCanvas.width=512;numberCanvas.height=768;
   const nc=numberCanvas.getContext('2d');
   // A forward-leaning racing 1, with ivory face, gold keyline and dark separation from the paint.
@@ -33,6 +34,11 @@ export async function applyInteiaBranding(model, mechanics) {
     hit.object.add(decal);decals.push(decal);
   }
   project('main_body',[2,.32,-.55],[-1,0,0],[0,Math.PI/2,0],.76,.22);
+  // Channel avatar, preserved as supplied by YouTube, beside the sidepod sponsor signature.
+  project('main_body',[2,.35,-1.12],[-1,0,0],[0,Math.PI/2,0],.28,.22,sponsorMaterial,1);
+  project('main_body',[-2,.35,-1.12],[1,0,0],[0,-Math.PI/2,0],.28,.22,sponsorMaterial,1);
+  project('main_body',[.58,3,-.52],[0,-1,0],[-Math.PI/2,0,0],.36,.30,sponsorMaterial,1);
+  project('main_body',[-.58,3,-.52],[0,-1,0],[-Math.PI/2,0,0],.36,.30,sponsorMaterial,1);
   if(crestMaterial){
     project('main_body',[2,.36,.08],[-1,0,0],[0,Math.PI/2,0],.34,.22,crestMaterial,5/6);
     project('main_body',[0,3,1.35],[0,-1,0],[-Math.PI/2,0,0],.36,.45,crestMaterial,5/6);
@@ -41,5 +47,5 @@ export async function applyInteiaBranding(model, mechanics) {
   project('main_body',[0,3,2.02],[0,-1,0],[-Math.PI/2,0,0],.30,.45,numberMaterial,2/3);
   project('main_body',[2,.34,.58],[-1,0,0],[0,Math.PI/2,0],.30,.25,numberMaterial,2/3);
   document.body.dataset.inteiaDecals=String(decals.length);
-  return {decals,dispose(){decals.forEach(d=>{d.removeFromParent();d.geometry.dispose();});material.dispose();map.dispose();crestMaterial?.dispose();crestMap?.dispose();numberMaterial.dispose();numberMap.dispose();}};
+  return {decals,dispose(){decals.forEach(d=>{d.removeFromParent();d.geometry.dispose();});material.dispose();map.dispose();crestMaterial?.dispose();crestMap?.dispose();sponsorMaterial.dispose();sponsorMap.dispose();numberMaterial.dispose();numberMap.dispose();}};
 }
