@@ -53,12 +53,12 @@ export function createSennaDriver(model, mechanics) {
   for(let i=0;i<positions.count;i++){
    v.fromBufferAttribute(positions,i).applyMatrix4(part.matrix);
    const weight=THREE.MathUtils.smoothstep(v.y,.25,.55)*(1-THREE.MathUtils.smoothstep(v.z,.15,.49));
-   v.y-=.105*weight;
+   v.y-=.060*weight;
    v.applyMatrix4(inverse);positions.setXYZ(i,v.x,v.y,v.z);
   }
   positions.needsUpdate=true;part.geometry.computeVertexNormals();part.geometry.computeBoundingSphere();
  }
- const helmetModel=createHelmet1991({detail:64});const helmet=helmetModel.root;helmet.position.set(0,.653,.068);helmet.rotation.x=.14;helmet.scale.setScalar(.84);root.add(helmet);
+ const helmetModel=createHelmet1991({detail:64});const helmet=helmetModel.root;helmet.position.set(0,.698,.068);helmet.rotation.x=.14;helmet.scale.setScalar(.84);root.add(helmet);
  root.userData.helmet=helmet;
  return {root,update(){root.visible=mechanics.motionAvailable;},dispose(){helmetModel.dispose();root.removeFromParent();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());}};
 }
