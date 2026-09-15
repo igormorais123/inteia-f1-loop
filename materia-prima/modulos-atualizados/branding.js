@@ -47,8 +47,8 @@ export async function applyInteiaBranding(model, mechanics) {
   project('main_body',[2,.32,-.40],[-1,0,0],[0,Math.PI/2,0],.64,.22);
   project('main_body',[-2,.32,-.40],[1,0,0],[0,-Math.PI/2,0],.64,.22);
   // Transparent sponsor artwork on the upper engine cover, above the sidepod signature.
-  project('main_body',[2,.76,-.99],[-1,0,0],[0,Math.PI/2,0],.44,.12,sponsorMaterial,1);
-  project('main_body',[-2,.76,-.99],[1,0,0],[0,-Math.PI/2,0],.44,.12,sponsorMaterial,1);
+  project('main_body',[2,.76,-.99],[-1,0,0],[0,Math.PI/2,0],.44,.30,sponsorMaterial,1);
+  project('main_body',[-2,.76,-.99],[1,0,0],[0,-Math.PI/2,0],.44,.30,sponsorMaterial,1);
   if(crestMaterial){
     project('main_body',[2,.36,.08],[-1,0,0],[0,Math.PI/2,0],.34,.22,crestMaterial,5/6);
     project('main_body',[0,3,1.35],[0,-1,0],[-Math.PI/2,0,0],.36,.45,crestMaterial,5/6);
