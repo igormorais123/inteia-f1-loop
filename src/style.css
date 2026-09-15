@@ -185,3 +185,9 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
  .orbit-active .credit h3{font-size:20px}.orbit-active .credit h2{font-size:26px!important}.orbit-active .credit p{font-size:13px}.orbit-active .credits-roll{padding-top:15svh}
 }
 @media(pointer:coarse){#orbit-lock{display:none}}
+
+/* Channel sponsor paired with INTEIA in the opening credits. */
+.credit-channel{display:flex;flex-direction:column;align-items:center;gap:10px;margin:25px auto 0;width:fit-content;max-width:100%;text-decoration:none}
+.credit-channel img{display:block;width:140px;max-width:100%;height:auto}
+.credit-channel span{font-size:16px;color:#e6edf0}
+@media(max-width:760px){.credit-channel{margin-top:18px;gap:6px}.credit-channel img{width:105px}.credit-channel span{font-size:13px}}

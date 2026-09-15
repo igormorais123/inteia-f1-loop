@@ -19,7 +19,8 @@ writeFileSync(new URL('./index.html',import.meta.url),`<!doctype html>
 <aside id="film-credits" aria-label="Créditos de produção"><div class="credits-window"><div class="credits-roll">
 <div class="credit"><p>Uma aula em movimento</p><h2>ENGENHARIA<br>DE LOOP</h2></div>
 <div class="credit"><p>Professor</p><h3>Igor Morais<br>Vasconcelos</h3></div>
-<div class="credit"><p>Patrocínio</p><img class="credit-brand-official" src="./assets/inteia-assinatura-oficial.svg" alt="INTEIA"></div>
+<div class="credit"><p>Agradecimento especial</p><h3>Bob</h3><h3><a href="https://www.youtube.com/@inteligenciamilgrau" target="_blank" rel="noopener noreferrer">Inteligência 1000 Grau</a></h3><p>Seus vídeos ensinaram o caminho do loop.<br>Obrigado pela inspiração e pelas ideias para este grande final.</p></div>
+<div class="credit credit-sponsors"><p>Patrocínio</p><img class="credit-brand-official" src="./assets/inteia-assinatura-oficial.svg" alt="INTEIA"><a class="credit-channel" href="https://www.youtube.com/@inteligenciamilgrau" target="_blank" rel="noopener noreferrer"><img src="./assets/inteligencia-mil-grau-transparent.png" alt="Logo Inteligência 1000 Grau"><span>Inteligência 1000 Grau</span></a></div>
 <div class="credit"><p>Inteligências artificiais</p><h3>Fable 5.1</h3><h3>ChatGPT<br>Astra Ultra</h3></div>
 <div class="credit"><p>Criação da experiência</p><h3>Programação com IA</h3><h3>Direção de câmera</h3><h3>Narrativa interativa</h3></div>
 <div class="credit"><p>Técnicas visuais</p><h3>3D em tempo real</h3><h3>Motor animado</h3><h3>Luz e pós-produção</h3></div>
