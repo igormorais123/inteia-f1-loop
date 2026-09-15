@@ -37,8 +37,7 @@ export async function applyInteiaBranding(model, mechanics) {
   // Channel avatar, preserved as supplied by YouTube, beside the sidepod sponsor signature.
   project('main_body',[2,.35,-1.12],[-1,0,0],[0,Math.PI/2,0],.28,.22,sponsorMaterial,1);
   project('main_body',[-2,.35,-1.12],[1,0,0],[0,-Math.PI/2,0],.28,.22,sponsorMaterial,1);
-  project('main_body',[.58,3,-.52],[0,-1,0],[-Math.PI/2,0,0],.36,.30,sponsorMaterial,1);
-  project('main_body',[-.58,3,-.52],[0,-1,0],[-Math.PI/2,0,0],.36,.30,sponsorMaterial,1);
+  project('main_body',[0,3,-.65],[0,-1,0],[-Math.PI/2,0,0],.38,.15,sponsorMaterial,1);
   if(crestMaterial){
     project('main_body',[2,.36,.08],[-1,0,0],[0,Math.PI/2,0],.34,.22,crestMaterial,5/6);
     project('main_body',[0,3,1.35],[0,-1,0],[-Math.PI/2,0,0],.36,.45,crestMaterial,5/6);
