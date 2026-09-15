@@ -238,7 +238,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
   let departureTime=0;
   function apply(dt, time) {
     // Keep the circuit running after the last scroll pixel; replay resets the departure.
-    departureTime=pose.finale?.race>=.9999?departureTime+Math.min(dt,.1):0;
+    departureTime=pose.finale?.race>=.999?departureTime+(pose.racePaused?0:Math.min(dt,.1)):0;
     const t = pose.tunnel, d = pose.debrief, e = pose.exposure, v = pose.evaluate;
     const p = pose.index + pose.local;
     // Chapter 07 (engine/engine-shot.js): one take from the closing frame into the running engine.
@@ -268,7 +268,6 @@ export async function createScene(stage, {onProgress, onError, signal}) {
       target.lerp(engineAim.fromArray(engineTake.target),engineZoom);
       camera.position.lerp(engineAim.fromArray(engineTake.camera),engineZoom);
     }
-    if(departureTime>0)camera.position.z-=60*(1-Math.exp(-departureTime/10));
     // Handheld breathing and pointer parallax stay small so the take remains legible.
     const follow = 1 - Math.exp(-dt * 3);
     pointer.sx += (pointer.x - pointer.sx) * follow; pointer.sy += (pointer.y - pointer.sy) * follow;
@@ -286,6 +285,12 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     if (shot.lens) camera.fov = mix(camera.fov, shot.lens.fov, dedicated);
     if(engineZoom>0)camera.fov = mix(camera.fov,engineTake.fov,engineZoom);
     camera.far = r > 0 ? track.cameraFar : 80;
+    if(pose.freeCamera){
+      target.set(0,.45,0);camera.position.fromArray(pose.freeCamera);
+      if(mobile)camera.position.sub(target).multiplyScalar(1.65).add(target);
+      camera.fov=mobile?52:38;
+      camera.setViewOffset(width,height,mobile?0:width*.15,height*(mobile?.20:.12),width,height);
+    }
     camera.updateProjectionMatrix();
     camera.lookAt(target);
     if (s > 0) {

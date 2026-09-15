@@ -1,4 +1,5 @@
 import {FINALE_SECONDS} from './finale.js';
+import {mountFinaleExperience} from './finale-experience.js';
 import {CHAPTER_IDS,narrativePose,engineScroll} from './narrative.js';
 import {ENGINE_INTRO,ENGINE_LESSONS,engineBeat} from './engine/chapter.js';
 import {monitorTimeline} from './monitor-scene.js';
@@ -8,6 +9,7 @@ import {sampleStory,assessChoice,exportNotebook} from './story.js';
 
 document.body.classList.add('enhanced');
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const finaleExperience=mountFinaleExperience();
 // "Continue" inside the practice opens the next chapter's dialog; the lab already advanced its own stage.
 const learningLab = mountLearning($('#lesson-dialog'), {chapterIndex: 0, onNavigate: i=>openLesson(i,true)});
 $('#quiz').hidden = true;
@@ -84,12 +86,13 @@ function frame(now){
  // The camera trails the scroll with a damped follow: inertia without hijacking the page.
  if(snap||reduced.matches){shownP=targetP;snap=false;}else{shownP+=(targetP-shownP)*(1-Math.exp(-dt*5));if(Math.abs(targetP-shownP)<1e-4)shownP=targetP;}
  paint();
- if(state.reading||!scene)return;
+ if(state.reading||!scene){finaleExperience.update(null,dt,now/1000,true);return;}
  const monitor=monitorState();document.body.classList.toggle('monitor-focused',monitor.active&&monitor.weight>.98);
  const label=`${monitor.beat+1} / 3 · ${['Frentes','Platô','Limites'][monitor.beat]}`;
  if($('#monitor-page').textContent!==label)$('#monitor-page').textContent=label;
  const nextLabel=monitor.beat===2?'Seguir para o motor →':'Próxima →';if($('[data-monitor-next]').textContent!==nextLabel)$('[data-monitor-next]').textContent=nextLabel;
  pose=narrativePose(shownP);
+ finaleExperience.update(pose,dt,now/1000,false);
  document.body.classList.toggle('finale-running',!!pose.finale&&pose.finale.blend>.05);
  document.body.classList.toggle('finale-crossed',!!pose.finale?.crossed);
  document.body.classList.toggle('credits-active',!!pose.finale&&pose.finale.race>.995);

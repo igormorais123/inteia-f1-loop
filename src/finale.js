@@ -5,8 +5,9 @@ export function finalePose(local){
  const blend=smooth((local-.34)/.18),sweep=smooth((local-.38)/.14);
  const race=clamp((local-.52)/.48),distance=130*race*race;
  const rear=smooth(race/.42),depart=smooth((race-.58)/.42);
+ const angle=-Math.PI+(.7+Math.PI)*depart,radius=9;
  return {blend,sweep,race,distance,crossed:distance>82.6,
-  camera:[7*(1-rear),2.7+.8*rear,-5-4*rear-27*depart],
+  camera:[7*(1-rear)+Math.sin(angle)*radius*rear,2.7-.02*depart,(-5*(1-rear)+Math.cos(angle)*radius*rear)],
   target:[0,.5,0],lineZ:80-distance,
   speed:race>0?.55+.45*race:0};
 }

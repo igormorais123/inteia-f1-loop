@@ -2,13 +2,23 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {finalePose} from '../src/finale.js';
 import {engineScroll,narrativePose} from '../src/narrative.js';
+import {orbitCamera} from '../src/finale-experience.js';
 
-test('finish is viewed from behind and the car accelerates away without stopping',()=>{
+test('finish keeps accelerating and returns to a bounded orbit for the credits',()=>{
  const before=finalePose(.88),end=finalePose(1);
- for(let p=.82;p<=1;p+=.01){const f=finalePose(p);assert.ok(f.camera[2]<f.target[2]);}
- assert.ok(end.camera[2]<before.camera[2]-10);
+ assert.ok(end.camera[2]>0);
+ assert.ok(Math.hypot(...end.camera)<11);
  assert.ok(end.distance-finalePose(.99).distance>finalePose(.89).distance-before.distance);
  assert.equal(end.speed,1);
+});
+
+test('free orbit clamps zoom and elevation while retaining a full circle',()=>{
+ for(const yaw of [-10,-Math.PI,0,Math.PI,10])for(const pitch of [-5,.3,5])for(const zoom of [-100,9,100]){
+  const c=orbitCamera(yaw,pitch,zoom),d=Math.hypot(c[0],c[1]-.45,c[2]);
+  assert.ok(d>=4.8-1e-9&&d<=13+1e-9);assert.ok(c[1]>.45);
+ }
+ const a=orbitCamera(.7,.25,9),b=orbitCamera(.7+Math.PI*2,.25,9);
+ a.forEach((v,i)=>assert.ok(Math.abs(v-b[i])<1e-9));
 });
 
 test('engine controls land on the same lessons after retiming and reserve space for closure',()=>{

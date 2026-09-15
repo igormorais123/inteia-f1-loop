@@ -156,3 +156,32 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
 .brand img{width:190px;height:auto;max-height:64px;object-fit:contain}.brand{gap:22px}
 .credit-brand-official{width:min(100%,330px);height:auto;display:block;margin:0 auto}
 @media(max-width:760px){.brand img{width:116px!important;height:auto;max-height:44px}.brand{gap:8px}.credit-brand-official{width:210px;max-width:100%}}
+/* Finale: the car and credits each have their own clear area. */
+#finale-controls,#orbit-surface{display:none}
+.orbit-active:not(.reading) #orbit-surface{display:block;position:fixed;inset:95px 36vw 215px 0;z-index:7;touch-action:none;cursor:grab;outline-offset:-6px}
+#orbit-surface:active{cursor:grabbing}
+.orbit-active:not(.reading) #finale-controls{display:block;position:fixed;z-index:12;left:4vw;bottom:68px;width:58vw;max-width:760px;padding:18px 20px;background:linear-gradient(100deg,#080e15ed,#080e1580);border-left:2px solid #d7b565}
+#finale-controls h2{font-size:32px!important;margin:4px 0 7px;letter-spacing:1px}
+#finale-controls p{margin:4px 0;font-size:14px;line-height:1.4;color:#c7cfd4}
+#finale-controls .finale-kicker{font-size:10px;letter-spacing:2px;color:#e7cb8b}
+#finale-controls .finale-note{font-size:11px;color:#9da8af;margin-top:9px}
+.finale-buttons{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.finale-buttons button{border:1px solid #ffffff40;padding:9px 11px;font-size:13px;background:#101820d9;min-height:38px}
+.finale-buttons button:hover,.finale-buttons button:focus-visible{border-color:#e7cb8b;background:#25313d}
+.orbit-active #finish-caption{display:none!important}
+.orbit-active #film-credits{right:2vw!important;top:12svh!important;width:31vw!important;height:76svh!important;background:linear-gradient(90deg,transparent,#080d12db 18%)!important}
+.orbit-active .credit{margin-bottom:45px;padding:0 12px}
+.orbit-active .credit h3{font-size:clamp(22px,2.3vw,34px)}
+.orbit-active .credit h2{font-size:clamp(32px,3.2vw,48px)!important}
+.orbit-active .credit p{font-size:16px}
+.orbit-active #orbit-status:empty{display:none}
+@media(max-width:760px){
+ .orbit-active:not(.reading) #orbit-surface{inset:90px 0 47svh}
+ .orbit-active:not(.reading) #finale-controls{left:3vw;bottom:53px;width:94vw;padding:10px 12px}
+ #finale-controls h2{font-size:23px!important}.finale-buttons{gap:4px;margin-top:6px}.finale-buttons button{font-size:11px;padding:7px;min-height:34px}
+ #finale-controls p{font-size:12px}#finale-controls .finale-note{font-size:10px}
+ .orbit-active #film-credits{top:51svh!important;right:3vw!important;width:94vw!important;height:20svh!important;background:linear-gradient(90deg,transparent,#080d12d9,transparent)!important}
+ .orbit-active .credits-window{height:calc(100% - 35px)}.orbit-active #credits-pause{padding:5px;font-size:12px}
+ .orbit-active .credit h3{font-size:20px}.orbit-active .credit h2{font-size:26px!important}.orbit-active .credit p{font-size:13px}.orbit-active .credits-roll{padding-top:15svh}
+}
+@media(pointer:coarse){#orbit-lock{display:none}}
