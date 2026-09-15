@@ -191,3 +191,5 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
 .credit-channel img{display:block;width:140px;max-width:100%;height:auto}
 .credit-channel span{font-size:16px;color:#e6edf0}
 @media(max-width:760px){.credit-channel{margin-top:18px;gap:6px}.credit-channel img{width:105px}.credit-channel span{font-size:13px}}
+
+.finale-volume{display:flex;align-items:center;gap:10px;font-size:12px;color:#c7cfd4;margin-top:10px}.finale-volume input{width:120px;accent-color:#d7b565}
