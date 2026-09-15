@@ -17,7 +17,7 @@ export async function applyInteiaBranding(model, mechanics) {
   // A forward-leaning racing 1, with ivory face, gold keyline and dark separation from the paint.
   nc.translate(50,55);nc.transform(1,0,-.12,1,0,0);
   const one=new Path2D('M120 160 L245 40 L345 40 L345 580 L405 580 L405 670 L105 670 L105 580 L190 580 L190 190 L120 250 Z');
-  nc.lineJoin='round';nc.lineWidth=34;nc.strokeStyle='#101214';nc.stroke(one);nc.lineWidth=14;nc.strokeStyle='#CFA64B';nc.stroke(one);nc.fillStyle='#F5F1E7';nc.fill(one);
+  nc.lineJoin='round';nc.lineWidth=54;nc.strokeStyle='#101214';nc.stroke(one);nc.lineWidth=26;nc.strokeStyle='#CFA64B';nc.stroke(one);nc.fillStyle='#F5F1E7';nc.fill(one);
   const numberMap=new THREE.CanvasTexture(numberCanvas);numberMap.colorSpace=THREE.SRGBColorSpace;numberMap.anisotropy=8;
   const numberMaterial=new THREE.MeshStandardMaterial({...options,name:'Número 1 | marfim e dourado',map:numberMap});
   const decals=[];model.updateMatrixWorld(true);
@@ -27,6 +27,17 @@ export async function applyInteiaBranding(model, mechanics) {
     const ray=new THREE.Raycaster(new THREE.Vector3(...origin).add(offset),new THREE.Vector3(...direction));
     const hit=ray.intersectObject(record.root,true).find(h=>h.object.isMesh&&!h.object.userData.inteiaDecal);if(!hit)return;
     const geo=new DecalGeometry(hit.object,hit.point,new THREE.Euler(...rotation),new THREE.Vector3(width,width/decalAspect,depth));
+    // Side sponsors must not wrap onto the crown or project through the opposite side.
+    if(decalMaterial===sponsorMaterial){
+      const normals=geo.attributes.normal,keep=[];
+      const outward=new THREE.Vector3(...direction).negate();
+      for(let i=0;i<normals.count;i+=3){
+        let facing=0;
+        for(let j=0;j<3;j++)facing+=normals.getX(i+j)*outward.x+normals.getY(i+j)*outward.y+normals.getZ(i+j)*outward.z;
+        if(facing/3>.55)keep.push(i,i+1,i+2);
+      }
+      geo.setIndex(keep);
+    }
     if(!geo.attributes.position.count){geo.dispose();return;}
     geo.applyMatrix4(hit.object.matrixWorld.clone().invert());
     const decal=new THREE.Mesh(geo,decalMaterial);decal.name='INTEIA / '+source+' / '+decals.length;
@@ -36,8 +47,8 @@ export async function applyInteiaBranding(model, mechanics) {
   project('main_body',[2,.32,-.40],[-1,0,0],[0,Math.PI/2,0],.64,.22);
   project('main_body',[-2,.32,-.40],[1,0,0],[0,-Math.PI/2,0],.64,.22);
   // Transparent sponsor artwork on the upper engine cover, above the sidepod signature.
-  project('main_body',[2,.76,-.99],[-1,0,0],[0,Math.PI/2,0],.44,.40,sponsorMaterial,1);
-  project('main_body',[-2,.76,-.99],[1,0,0],[0,-Math.PI/2,0],.44,.40,sponsorMaterial,1);
+  project('main_body',[2,.76,-.99],[-1,0,0],[0,Math.PI/2,0],.44,.12,sponsorMaterial,1);
+  project('main_body',[-2,.76,-.99],[1,0,0],[0,-Math.PI/2,0],.44,.12,sponsorMaterial,1);
   if(crestMaterial){
     project('main_body',[2,.36,.08],[-1,0,0],[0,Math.PI/2,0],.34,.22,crestMaterial,5/6);
     project('main_body',[0,3,1.35],[0,-1,0],[-Math.PI/2,0,0],.36,.45,crestMaterial,5/6);
