@@ -20,7 +20,16 @@ export function createHelmet1991({detail=128}={}) {
  // Smooth crown, fuller rear shell, flattened cheek and projecting chin.
  const profile=[[-.14,.116],[-.13,.126],[-.10,.132],[-.05,.139],[0,.143],[.05,.142],[.09,.133],[.12,.113],[.145,.082],[.162,.04],[.168,0]];
  function radius(y){let i=1;while(i<profile.length-1&&y>profile[i][0])i++;const a=profile[i-1],b=profile[i],prev=profile[Math.max(0,i-2)],next=profile[Math.min(profile.length-1,i+1)];const t=THREE.MathUtils.clamp((y-a[0])/(b[0]-a[0]),0,1),h=b[0]-a[0],m0=(b[1]-prev[1])/(b[0]-prev[0]),m1=(next[1]-a[1])/(next[0]-a[0]);return Math.max(0,(2*t*t*t-3*t*t+1)*a[1]+(t*t*t-2*t*t+t)*h*m0+(-2*t*t*t+3*t*t)*b[1]+(t*t*t-t*t)*h*m1);}
- function point(y,a,lift=0){const r=radius(y)+lift,c=Math.cos(a),f=Math.max(0,c);return new THREE.Vector3(Math.sin(a)*r,y,c*r*1.075+f*f*(.015+.038*(1-THREE.MathUtils.smoothstep(y,-.065,.06))));}
+ function point(y,a,lift=0){
+  const r=radius(y)+lift,c=Math.cos(a),f=Math.max(0,c),side=Math.pow(Math.abs(Math.sin(a)),6)*Math.max(0,c+.2);
+  // Oval plan, flatter cheeks and a rearward crown: the helmet is not a surface of revolution.
+  const cheek=1-.065*Math.exp(-Math.pow((y+.075)/.05,2));
+  const x=Math.sin(a)*r*.90*cheek;
+  const crownShift=-.018*THREE.MathUtils.smoothstep(y,.03,.168);
+  const z=c*r*(c<0?1.19:1.02)+f*f*(.005+.055*(1-THREE.MathUtils.smoothstep(y,-.065,.075)))+crownShift;
+  const shapedY=y*.96+side*(.024*Math.exp(-Math.pow((y+.035)/.043,2))-.010*Math.exp(-Math.pow((y-.06)/.03,2)));
+  return new THREE.Vector3(x,shapedY,z);
+ }
  function patch(y0,y1,a0,a1,m,lift=0,rows=36,cols=detail,parent=root){const p=[],uv=[],idx=[];for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){const a=THREE.MathUtils.lerp(a0,a1,i/cols),y=THREE.MathUtils.lerp(y0,y1,j/rows);p.push(...point(y,a,lift).toArray());uv.push(i/cols,j/rows);}for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const k=j*(cols+1)+i;idx.push(k,k+1,k+cols+1,k+1,k+cols+2,k+cols+1);}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);g.computeVertexNormals();return add(g,m,parent);}
  // A real aperture, not a black sticker over a closed sphere.
  patch(.065,.168,-Math.PI,Math.PI,yellow,0,64);
