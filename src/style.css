@@ -152,3 +152,7 @@ dialog{word-spacing:.03em}.lr-lab{line-height:1.6}.small{font-size:12px}
 @keyframes film-roll{from{transform:translateY(0)}to{transform:translateY(-100%)}}
 @media(max-width:760px){.enhanced:not(.reading).credits-active #film-credits{right:2vw;width:61vw;top:13svh;height:60svh}.credit{padding:0 8px;margin-bottom:55px}.credit p{font-size:17px}.credit h3{font-size:25px}.credit h2{font-size:36px!important}.credits-roll{padding-top:50svh}#credits-pause{font-size:15px}.credits-active #finish-caption{max-width:90%;font-size:18px!important}}
 @media(prefers-reduced-motion:reduce){.credits-roll{animation:none;padding-top:10px}.credits-window{overflow:auto;mask-image:none}#credits-pause{display:none}}
+/* Official INTEIA signature, including shield and original outlined name. */
+.brand img{width:190px;height:auto;max-height:64px;object-fit:contain}.brand{gap:22px}
+.credit-brand-official{width:min(100%,330px);height:auto;display:block;margin:0 auto}
+@media(max-width:760px){.brand img{width:116px!important;height:auto;max-height:44px}.brand{gap:8px}.credit-brand-official{width:210px;max-width:100%}}

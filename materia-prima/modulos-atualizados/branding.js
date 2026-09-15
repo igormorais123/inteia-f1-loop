@@ -1,33 +1,24 @@
-import {glyphs} from './identity.js';
 import * as THREE from 'three';
 import {DecalGeometry} from 'three/addons/geometries/DecalGeometry.js';
 
 // One outlined INTEIA signature on the right sidepod, attached to the moving body.
 export async function applyInteiaBranding(model, mechanics) {
-  const canvas=document.createElement('canvas');canvas.width=1536;canvas.height=320;
-  const ctx=canvas.getContext('2d');ctx.scale(3.6,3.6);ctx.translate(29,12);
-  ctx.transform(1,0,-Math.tan(12*Math.PI/180),1,0,0);
-  for(const [,path,accent] of glyphs){
-    ctx.fillStyle=accent?'#ffd447':'#f5f5f2';
-    ctx.fill(new Path2D(path),'evenodd');
-  }
-  const aspect=canvas.width/canvas.height;
-  const map=new THREE.CanvasTexture(canvas);map.colorSpace=THREE.SRGBColorSpace;map.anisotropy=8;
-  const material=new THREE.MeshStandardMaterial({name:'INTEIA | branco e amarelo',map,roughness:.35,metalness:0,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-4});
-  // 512×768 WebP (≈120 kB): the badge is 0.20–0.23 m on the car. A failed load only omits the badge.
-  const crestMap=await new THREE.TextureLoader().loadAsync(`${import.meta.env.BASE_URL}assets/inteia-crest-racing-v1.webp`).catch(()=>null);
-  if(crestMap){crestMap.colorSpace=THREE.SRGBColorSpace;crestMap.anisotropy=8;}
-  // The generated artwork has an opaque exterior. A separate material mask
-  // follows the shield boundary, leaving the paint visible outside the badge.
-  const mask=document.createElement('canvas');mask.width=512;mask.height=768;
-  const mc=mask.getContext('2d');mc.scale(.5,.5);mc.fillStyle='#000';mc.fillRect(0,0,1024,1536);
-  mc.fillStyle='#fff';mc.beginPath();mc.moveTo(512,96);
-  mc.bezierCurveTo(380,205,195,265,32,309);
-  mc.bezierCurveTo(10,780,162,1110,512,1358);
-  mc.bezierCurveTo(862,1110,1014,780,992,309);
-  mc.bezierCurveTo(829,265,644,205,512,96);mc.closePath();mc.fill();
-  const crestAlpha=new THREE.CanvasTexture(mask);
-  const crestMaterial=crestMap&&new THREE.MeshStandardMaterial({name:'INTEIA | escudo neural racing',map:crestMap,alphaMap:crestAlpha,alphaTest:.5,roughness:.4,metalness:.12,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-4});
+  // Approved vector artwork: preserve the original contours, palette and transparent exterior.
+  const loader=new THREE.TextureLoader();
+  const [map,crestMap]=await Promise.all(['inteia-nome-oficial.svg','inteia-escudo-oficial.svg'].map(name=>loader.loadAsync(`${import.meta.env.BASE_URL}assets/${name}`)));
+  for(const t of [map,crestMap]){t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;}
+  const aspect=910.78125/210;
+  const options={roughness:.35,metalness:.05,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-4};
+  const material=new THREE.MeshStandardMaterial({...options,name:'INTEIA | assinatura oficial',map});
+  const crestMaterial=new THREE.MeshStandardMaterial({...options,name:'INTEIA | brasão oficial SVG',map:crestMap});
+  const numberCanvas=document.createElement('canvas');numberCanvas.width=512;numberCanvas.height=768;
+  const nc=numberCanvas.getContext('2d');
+  // A forward-leaning racing 1, with ivory face, gold keyline and dark separation from the paint.
+  nc.translate(50,55);nc.transform(1,0,-.12,1,0,0);
+  const one=new Path2D('M120 160 L245 40 L345 40 L345 580 L405 580 L405 670 L105 670 L105 580 L190 580 L190 190 L120 250 Z');
+  nc.lineJoin='round';nc.lineWidth=34;nc.strokeStyle='#101214';nc.stroke(one);nc.lineWidth=14;nc.strokeStyle='#CFA64B';nc.stroke(one);nc.fillStyle='#F5F1E7';nc.fill(one);
+  const numberMap=new THREE.CanvasTexture(numberCanvas);numberMap.colorSpace=THREE.SRGBColorSpace;numberMap.anisotropy=8;
+  const numberMaterial=new THREE.MeshStandardMaterial({...options,name:'Número 1 | marfim e dourado',map:numberMap});
   const decals=[];model.updateMatrixWorld(true);
   const offset=model.position;
   function project(source,origin,direction,rotation,width,depth,decalMaterial=material,decalAspect=aspect){
@@ -43,9 +34,12 @@ export async function applyInteiaBranding(model, mechanics) {
   }
   project('main_body',[2,.32,-.55],[-1,0,0],[0,Math.PI/2,0],.76,.22);
   if(crestMaterial){
-    project('main_body',[2,.36,.03],[-1,0,0],[0,Math.PI/2,0],.20,.22,crestMaterial,2/3);
-    project('main_body',[0,3,1.62],[0,-1,0],[-Math.PI/2,0,0],.23,.45,crestMaterial,2/3);
+    project('main_body',[2,.36,.08],[-1,0,0],[0,Math.PI/2,0],.34,.22,crestMaterial,5/6);
+    project('main_body',[0,3,1.35],[0,-1,0],[-Math.PI/2,0,0],.36,.45,crestMaterial,5/6);
+    project('main_body',[-2,.36,.08],[1,0,0],[0,-Math.PI/2,0],.34,.22,crestMaterial,5/6);
   }
+  project('main_body',[0,3,2.02],[0,-1,0],[-Math.PI/2,0,0],.30,.45,numberMaterial,2/3);
+  project('main_body',[2,.34,.58],[-1,0,0],[0,Math.PI/2,0],.30,.25,numberMaterial,2/3);
   document.body.dataset.inteiaDecals=String(decals.length);
-  return {decals,dispose(){decals.forEach(d=>{d.removeFromParent();d.geometry.dispose();});material.dispose();map.dispose();crestMaterial?.dispose();crestMap?.dispose();crestAlpha.dispose();}};
+  return {decals,dispose(){decals.forEach(d=>{d.removeFromParent();d.geometry.dispose();});material.dispose();map.dispose();crestMaterial?.dispose();crestMap?.dispose();numberMaterial.dispose();numberMap.dispose();}};
 }
