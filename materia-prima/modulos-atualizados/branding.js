@@ -5,7 +5,7 @@ import {DecalGeometry} from 'three/addons/geometries/DecalGeometry.js';
 export async function applyInteiaBranding(model, mechanics) {
   // Approved vector artwork: preserve the original contours, palette and transparent exterior.
   const loader=new THREE.TextureLoader();
-  const [map,crestMap,sponsorMap]=await Promise.all(['inteia-nome-oficial.svg','inteia-escudo-oficial.svg','inteligencia-mil-grau.jpg'].map(name=>loader.loadAsync(`${import.meta.env.BASE_URL}assets/${name}`)));
+  const [map,crestMap,sponsorMap]=await Promise.all(['inteia-nome-oficial.svg','inteia-escudo-oficial.svg','inteligencia-mil-grau-transparent.png'].map(name=>loader.loadAsync(`${import.meta.env.BASE_URL}assets/${name}`)));
   for(const t of [map,crestMap,sponsorMap]){t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;}
   const aspect=910.78125/210;
   const options={roughness:.35,metalness:.05,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-4};
@@ -33,11 +33,10 @@ export async function applyInteiaBranding(model, mechanics) {
     decal.userData={inteiaDecal:true,recordId:record.id};decal.renderOrder=2;decal.receiveShadow=true;
     hit.object.add(decal);decals.push(decal);
   }
-  project('main_body',[2,.32,-.55],[-1,0,0],[0,Math.PI/2,0],.76,.22);
-  // Channel avatar, preserved as supplied by YouTube, beside the sidepod sponsor signature.
-  project('main_body',[2,.35,-1.12],[-1,0,0],[0,Math.PI/2,0],.28,.22,sponsorMaterial,1);
-  project('main_body',[-2,.35,-1.12],[1,0,0],[0,-Math.PI/2,0],.28,.22,sponsorMaterial,1);
-  project('main_body',[0,3,-.65],[0,-1,0],[-Math.PI/2,0,0],.38,.15,sponsorMaterial,1);
+  project('main_body',[2,.32,-.40],[-1,0,0],[0,Math.PI/2,0],.64,.22);
+  // Transparent sponsor artwork: spaced from the signature and kept on the painted sidepod.
+  project('main_body',[2,.30,-.99],[-1,0,0],[0,Math.PI/2,0],.38,.30,sponsorMaterial,1);
+  project('main_body',[-2,.30,-.99],[1,0,0],[0,-Math.PI/2,0],.38,.30,sponsorMaterial,1);
   if(crestMaterial){
     project('main_body',[2,.36,.08],[-1,0,0],[0,Math.PI/2,0],.34,.22,crestMaterial,5/6);
     project('main_body',[0,3,1.35],[0,-1,0],[-Math.PI/2,0,0],.36,.45,crestMaterial,5/6);
