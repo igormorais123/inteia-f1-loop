@@ -44,7 +44,21 @@ export function createSennaDriver(model, mechanics) {
  patchLabel('A. SENNA',0,.482,.313,.08,.018,'#e4dfd2','#181a1c');
  path([[0,.616,.141],[0,.55,.225],[0,.40,.33]],.0018,metal);
  const buckle=mesh(new THREE.CylinderGeometry(.022,.022,.008,32),metal);buckle.rotation.x=Math.PI/2;buckle.position.set(0,.392,.36);
- const helmetModel=createHelmet1991({detail:64});const helmet=helmetModel.root;helmet.position.set(0,.758,.068);helmet.rotation.x=.14;helmet.scale.setScalar(.84);root.add(helmet);
+ // Sink the upper body into the seat while keeping wrists on the fixed wheel.
+ // The deformation fades towards the pelvis and forward along the forearms.
+ root.updateMatrixWorld(true);
+ for(const part of root.children){
+  if(!part.isMesh)continue;
+  part.updateMatrix();const inverse=part.matrix.clone().invert(),positions=part.geometry.attributes.position,v=new THREE.Vector3();
+  for(let i=0;i<positions.count;i++){
+   v.fromBufferAttribute(positions,i).applyMatrix4(part.matrix);
+   const weight=THREE.MathUtils.smoothstep(v.y,.25,.55)*(1-THREE.MathUtils.smoothstep(v.z,.15,.49));
+   v.y-=.105*weight;
+   v.applyMatrix4(inverse);positions.setXYZ(i,v.x,v.y,v.z);
+  }
+  positions.needsUpdate=true;part.geometry.computeVertexNormals();part.geometry.computeBoundingSphere();
+ }
+ const helmetModel=createHelmet1991({detail:64});const helmet=helmetModel.root;helmet.position.set(0,.653,.068);helmet.rotation.x=.14;helmet.scale.setScalar(.84);root.add(helmet);
  root.userData.helmet=helmet;
  return {root,update(){root.visible=mechanics.motionAvailable;},dispose(){helmetModel.dispose();root.removeFromParent();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());}};
 }
