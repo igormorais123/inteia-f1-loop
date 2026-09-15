@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {DecalGeometry} from 'three/addons/geometries/DecalGeometry.js';
 
-// One outlined INTEIA signature on the right sidepod, attached to the moving body.
+// Symmetric INTEIA signatures on both sidepods, readable from either side.
 export async function applyInteiaBranding(model, mechanics) {
   // Approved vector artwork: preserve the original contours, palette and transparent exterior.
   const loader=new THREE.TextureLoader();
@@ -34,6 +34,7 @@ export async function applyInteiaBranding(model, mechanics) {
     hit.object.add(decal);decals.push(decal);
   }
   project('main_body',[2,.32,-.40],[-1,0,0],[0,Math.PI/2,0],.64,.22);
+  project('main_body',[-2,.32,-.40],[1,0,0],[0,-Math.PI/2,0],.64,.22);
   // Transparent sponsor artwork on the upper engine cover, above the sidepod signature.
   project('main_body',[2,.76,-.99],[-1,0,0],[0,Math.PI/2,0],.44,.40,sponsorMaterial,1);
   project('main_body',[-2,.76,-.99],[1,0,0],[0,-Math.PI/2,0],.44,.40,sponsorMaterial,1);
