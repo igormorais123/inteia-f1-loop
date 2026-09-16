@@ -1,6 +1,7 @@
 import {createSennaDriver} from './senna-driver.js';
 import {createFinishLine} from './finale.js';
 import {createInCarEngine} from './engine/in-car.js';
+import {attachInternalsKit} from './car/internals-kit.js';
 import {engineShot} from './engine/engine-shot.js';
 import {createFrameQuality} from './fx/frame-quality.js';
 import * as THREE from 'three';
@@ -147,6 +148,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
   // Wheel machining and artwork authored by the other execution refine these base maps.
   const carLook = enhanceCar({model, mechanics, mobile});
   const driver = createSennaDriver(model, mechanics);
+  const internals = attachInternalsKit(model, mechanics, {mobile});
   // The finish pass runs last so its art direction is the final word on the car materials.
   let triangles = 0;
   const offsetScale = new THREE.Vector3();
@@ -401,7 +403,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     debug?.after?.();
   }
   // ?debug=1 exposes the rig to tools/probe.mjs for isolating a look problem.
-  const debug = params.has('debug') ? (window.__scene = {inCarEngine,scene, camera, key, rim, front, hemi, garage, tunnel, track, sparks, wheelBlur, post, mechanics, model, renderer}) : null;
+  const debug = params.has('debug') ? (window.__scene = {inCarEngine,internals,scene, camera, key, rim, front, hemi, garage, tunnel, track, sparks, wheelBlur, post, mechanics, model, renderer}) : null;
 
   // Adapt only after warmup and sustained slow real frames, never simulation dt.
   const adaptive = params.get('quality') !== 'high';
@@ -481,7 +483,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
       if (!stage.dataset.loaded) { stage.dataset.loaded = 'true'; stage.classList.add('loaded'); }
       adapt(time * 1000, budgetMs);
     },
-    dispose() { driver.dispose();finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
+    dispose() { internals.dispose(); driver.dispose();finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
   };
 }
 

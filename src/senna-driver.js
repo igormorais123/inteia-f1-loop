@@ -60,5 +60,11 @@ export function createSennaDriver(model, mechanics) {
  }
  const helmetModel=createHelmet1991({detail:64});const helmet=helmetModel.root;helmet.position.set(0,.698,.068);helmet.rotation.x=.14;helmet.scale.setScalar(.84);root.add(helmet);
  root.userData.helmet=helmet;
+ const hans=mat({color:'#1b1d20',roughness:.52,metalness:.08});
+ for(const side of [-1,1]){
+  const plate=mesh(new THREE.BoxGeometry(.048,.011,.12),hans);plate.position.set(side*.068,.575,.125);plate.rotation.x=-.58;plate.rotation.z=side*.18;
+  path([[side*.048,.605,.11],[side*.055,.655,.085],[side*.05,.705,.072]],.0024,black);
+ }
+ const collar=mesh(new THREE.TorusGeometry(.058,.007,8,18,Math.PI),hans);collar.position.set(0,.625,.095);collar.rotation.x=Math.PI/2;collar.rotation.z=Math.PI;
  return {root,update(){root.visible=mechanics.motionAvailable;},dispose(){helmetModel.dispose();root.removeFromParent();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());}};
 }

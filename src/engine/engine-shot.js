@@ -8,8 +8,10 @@ const smooth=t=>{t=clamp(t);return t*t*(3-2*t);};
 export const ENGINE_PARTS={
  crank:[0,.37,-.60],     // assembly_rotating: crankshaft, rods and pistons
  pistons:[-.02,.47,-.62],
- intake:[0,.59,-.70],    // assembly_intake: plenum and runners
+ intake:[0,.59,-.70],    // assembly_intake: fixed trumpets (2026: no variable stacks)
  runners:[.05,.52,-.50],
+ mguh:[0,.48,-.68],      // legacy alias
+ mguk:[.18,.40,-.70],    // 2026 MGU-K (~350 kW), no MGU-H
  turbo:[-.03,.40,-.95]   // assembly_turbo, at the rear of the bay
 };
 // Reading windows of the three lessons; engineBeat (chapter.js) switches the copy between them.

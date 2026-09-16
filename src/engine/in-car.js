@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {engineShot} from './engine-shot.js';
+import {attachHybridKit} from './hybrid-kit.js';
 
 // Engine bay in the car model frame (tools/car-hull.json): from behind the cockpit rim to the tail,
 // above the sidepod lip. The body shell is one mesh, so the cover is the same geometry split by planes.
@@ -89,6 +90,8 @@ export function createInCarEngine({scene,renderer,camera,model,mechanics,target,
   const unit=gltf.scene,bounds=new THREE.Box3().setFromObject(unit),size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
   const scale=ENGINE_LENGTH/Math.max(size.x,size.y,size.z);
   root.scale.setScalar(scale);unit.position.sub(center);root.add(unit);
+  attachHybridKit(unit);
+  collect(unit);
   unit.updateMatrixWorld(true);
   const worldScale=new THREE.Vector3();
   unit.traverse(o=>{
@@ -98,7 +101,7 @@ export function createInCarEngine({scene,renderer,camera,model,mechanics,target,
     o.castShadow=!mobile&&o.geometry.boundingSphere.radius*o.getWorldScale(worldScale).x>SHADOW_RADIUS;o.receiveShadow=true;
    }
    if(!/^assembly_/.test(o.name))return;
-   // Moving parts and the turbo stay whole; the static block, heads, exhausts, intake and MGU-K are sectioned.
+   // Moving parts and the turbo stay whole; block, heads, exhausts, intake and the 2026 MGU-K are sectioned.
    groups.push({object:o,cut:!/rotating|turbo/.test(o.name),hiddenWhenCut:/head_right|exhaust_right|electric/.test(o.name)});
   });
   const sectioned=m=>{if(!cutMaterials.has(m)){const c=m.clone();c.clippingPlanes=[cutPlane];c.side=THREE.DoubleSide;cutMaterials.set(m,c);}return cutMaterials.get(m);};
