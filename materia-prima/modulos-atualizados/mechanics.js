@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-const names={main_body:'Carroceria',main_body_inside:'Interior do cockpit',main_body_glass:'Defletor transparente',front_tire:'Pneu dianteiro',rear_tire:'Pneu traseiro',front_wheel_cover:'Roda dianteira',rear_wheel_cover:'Roda traseira',front_control_arms:'Braços da suspensão dianteira',rear_control_arms:'Braços da suspensão traseira',front_pushrod:'Pushrod dianteiro',rear_driveshaft:'Semieixo traseiro',front_wing:'Asa dianteira',rear_wing:'Asa traseira',floor:'Assoalho',side_mirrors:'Retrovisor',steering_wheel:'Volante',exhaust:'Escapamento',antennas:'Antenas',drs:'Mecanismo da asa',lcd_screen:'Display do volante',inside_cover:'Cobertura interna',rear_inside_cover:'Cobertura interna traseira',sw_connection:'Conexão do volante',top_intake_details:'Detalhes da entrada de ar',rear_led:'Luz traseira',new_rear_LED:'Conjunto da luz traseira'};
+const names={main_body:'Carroceria',main_body_inside:'Interior do cockpit',main_body_glass:'Defletor transparente',front_tire:'Pneu dianteiro',rear_tire:'Pneu traseiro',front_wheel_cover:'Roda dianteira',rear_wheel_cover:'Roda traseira',front_control_arms:'Braços da suspensão dianteira',rear_control_arms:'Braços da suspensão traseira',front_pushrod:'Pushrod dianteiro',rear_driveshaft:'Semieixo traseiro',front_wing:'Asa dianteira',rear_wing:'Asa traseira',floor:'Assoalho',side_mirrors:'Retrovisor',steering_wheel:'Volante',exhaust:'Escapamento',antennas:'Antenas',drs:'Mecanismo da asa ativa',lcd_screen:'Display do volante',inside_cover:'Cobertura interna',rear_inside_cover:'Cobertura interna traseira',sw_connection:'Conexão do volante',top_intake_details:'Detalhes da entrada de ar',rear_led:'Luz traseira',new_rear_LED:'Conjunto da luz traseira'};
 export function createMechanics(model){
  const roots=[],records=[];model.traverse(o=>{if(o.userData.assemblyComponent)roots.push(o);});
  if(!roots.length)roots.push(...model.children);
@@ -38,12 +38,15 @@ export function createMechanics(model){
   model.updateMatrixWorld(true);for(const r of members){spinPivot.attach(r.root);r.base.copy(r.root.position);}for(const r of covers){pivot.attach(r.root);r.base.copy(r.root.position);}wheels.push({pivot,spinPivot,front,members,covers});
  }
  const flap=records.find(r=>r.source==='rear_wing_drs'||r.source.startsWith('rear_wing_drs__'));
- let flapPivot=null;
+ const frontFlap=records.find(r=>r.source==='front_wing_top'||r.source.startsWith('front_wing_top__'));
+ let flapPivot=null,frontPivot=null;
  if(flap){flapPivot=new THREE.Group();flapPivot.position.copy(flap.center);flapPivot.position.y+=flap.size.y*.4;flapPivot.position.z-=flap.size.z*.35;model.add(flapPivot);model.updateMatrixWorld(true);flapPivot.attach(flap.root);flap.base.copy(flap.root.position);}
+ if(frontFlap){frontPivot=new THREE.Group();frontPivot.position.copy(frontFlap.center);frontPivot.position.y+=frontFlap.size.y*.35;frontPivot.position.z+=frontFlap.size.z*.2;model.add(frontPivot);model.updateMatrixWorld(true);frontPivot.attach(frontFlap.root);frontFlap.base.copy(frontFlap.root.position);frontFlap.rotation.copy(frontFlap.root.quaternion);}
  function apply(){
   const moved=amount>.001||records.some(r=>Math.abs(r.manual)>.001||r.custom.lengthSq()>.000001),motion=moved?0:1;
   for(const w of wheels){w.pivot.rotation.set(0,w.front?steering*motion:0,0);w.spinPivot.rotation.x=spinAngle*motion;}
   if(flapPivot)flapPivot.rotation.x=-drs*motion;
+  if(frontPivot)frontPivot.rotation.x=drs*motion*.75;
   for(const r of records){
    if(dragging&&r.id===selected)continue;
    const delay={wheels:0,aero:.12,suspension:.18,body:.24,cockpit:.3,details:.32}[r.category];
@@ -59,7 +62,7 @@ export function createMechanics(model){
   setManual(v){if(selected!==null){records[selected].manual=v;apply();}},
   select(id){selected=id;isolated=false;apply();},
   isolate(){if(selected!==null){isolated=!isolated;apply();}},
-  setSpin(v){spin=v;},setSteering(v){steering=THREE.MathUtils.degToRad(v);},setDRS(v){drs=THREE.MathUtils.degToRad(v);},
+  setSpin(v){spin=v;},setSteering(v){steering=THREE.MathUtils.degToRad(v);},setDRS(v){drs=THREE.MathUtils.degToRad(v);},setXMode(v){drs=THREE.MathUtils.degToRad(v);},
   toggleLoop(){playing=!playing;phase=amount>.5?'in':'out';phaseStart=performance.now();},
   reset(){target=0;playing=false;selected=null;isolated=false;spin=false;spinAngle=0;steering=0;drs=0;dragging=false;records.forEach(r=>{r.manual=0;r.hidden=false;r.custom.set(0,0,0);r.root.quaternion.copy(r.rotation);});},
   update(dt,now,reduced){if(playing){const elapsed=(now-phaseStart)/1000;if(phase==='out'){target=1;if(amount>.999&&elapsed>4){phase='in';phaseStart=now;}}else{target=0;if(amount<.001&&elapsed>4){phase='out';phaseStart=now;}}}amount=reduced?target:THREE.MathUtils.damp(amount,target,4,dt);if(Math.abs(amount-target)<.0002)amount=target;if(spin&&amount<.001)spinAngle+=dt*1.2;apply();}

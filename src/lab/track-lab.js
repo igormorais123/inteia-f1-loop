@@ -17,6 +17,7 @@ import {createMechanics} from '../../materia-prima/modulos-atualizados/mechanics
 import {applyInteiaBranding} from '../../materia-prima/modulos-atualizados/branding.js';
 import {createSurfaceLibrary} from '../fx/surface-library.js';
 import {enhanceCar} from '../fx/car-look.js';
+import {attachInternalsKit} from '../car/internals-kit.js';
 import {createChoreo} from '../fx/choreo.js';
 import {wipeUniforms} from '../fx/wipe-clip.js';
 import {createTrack, TRACK_TOP_SPEED} from '../world/track.js';
@@ -118,6 +119,7 @@ async function main() {
     }
   });
   const carLook = enhanceCar({model, mechanics, mobile});
+  attachInternalsKit(model, mechanics, {mobile});
   let carTriangles = 0;
   const scale = new THREE.Vector3();
   model.traverse(o => {

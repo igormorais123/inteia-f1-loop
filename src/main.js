@@ -106,7 +106,7 @@ function frame(now){
  put('#title-motor-do-loop',inside?lesson.title:ENGINE_INTRO.title);
  put('#engine-chapter-text',inside?lesson.text:ENGINE_INTRO.text);
  put('#engine-part-label',inside?lesson.part:ENGINE_INTRO.part);$('#engine-source').hidden=inside;
- put('#engine-lesson-count',inside?`${beat+1} / 3`:'Motor V6');
+ put('#engine-lesson-count',inside?`${beat+1} / 3`:'PU 2026');
  put('[data-engine-chapter="next"]',!inside?'Entrar no motor →':beat<2?'Próxima →':'Fechar e continuar →');
  }
  pose.monitorScene=monitor.active?monitor.weight:0;pose.monitorReading=monitor.active?monitor.reading:null;const place=pose.engineChapter?'MOTOR DO LOOP':monitor.active&&monitor.weight>.5?'ANÁLISE NO BOX':pose.world==='track'?'PISTA':pose.world==='tunnel'?'TÚNEL DE VENTO':pose.index===2?'ESTAÇÃO DE DADOS':SCENE_LABELS[pose.index>=4?pose.index+1:pose.index];if($('#scene-label').textContent!==place)$('#scene-label').textContent=place;scene.setPose(pose);scene.render(dt,now/1000,idle?1000/30:1000/60);placeHotspot();
