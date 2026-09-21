@@ -2,7 +2,7 @@
 
 ## Baixar e reutilizar
 
-Os conteúdos originais de INTEIA / Igor Morais Vasconcelos estão disponíveis sob licença MIT: qualquer pessoa pode usar, copiar, modificar, redistribuir e utilizar comercialmente, preservando o aviso de copyright e a licença. Não é necessário pedir autorização adicional. Esta concessão inclui código, documentação e geometria original, inclusive seus arquivos exportados. Materiais de terceiros conservam suas próprias licenças; o motor V6 já publicado em CC BY 4.0 mantém essa opção de uso. A carroceria derivada do tutorial tem licença de origem não documentada; a MIT cobre as contribuições originais, sem relicenciar a geometria de terceiros.
+Os conteúdos originais de INTEIA / Igor Morais Vasconcelos estão disponíveis sob licença MIT: qualquer pessoa pode usar, copiar, modificar, redistribuir e utilizar comercialmente, preservando o aviso de copyright e a licença. Não é necessário pedir autorização adicional. Esta concessão inclui código, documentação e geometria original, inclusive seus arquivos exportados. Materiais de terceiros conservam suas próprias licenças; o motor V6 já publicado em CC BY 4.0 mantém essa opção de uso. Conforme declaração de autoria de Igor Morais Vasconcelos em 21/09/2026, o vídeo foi usado como referência para as funções das peças; a modelagem disponibilizada é de sua autoria. A carroceria, suas versões GLB, o master Blender e os demais modelos autorais estão incluídos na licença MIT, com permissão de uso, modificação, redistribuição e uso comercial.
 
 [Guia de assets e reutilização](REUTILIZACAO.md) · [Licença MIT](LICENSE) · [Baixar ZIP sem conta](https://github.com/igormorais123/inteia-f1-loop/archive/refs/heads/main.zip)
 
