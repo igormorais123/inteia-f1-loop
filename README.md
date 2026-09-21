@@ -1,5 +1,11 @@
 # INTEIA — Engenharia de Loop
 
+## Baixar e reutilizar
+
+Os conteúdos originais de INTEIA / Igor Morais Vasconcelos estão disponíveis sob licença MIT: qualquer pessoa pode usar, copiar, modificar, redistribuir e utilizar comercialmente, preservando o aviso de copyright e a licença. Não é necessário pedir autorização adicional. Esta concessão inclui código, documentação e geometria original, inclusive seus arquivos exportados. Materiais de terceiros conservam suas próprias licenças; o motor V6 já publicado em CC BY 4.0 mantém essa opção de uso. A carroceria derivada do tutorial tem licença de origem não documentada; a MIT cobre as contribuições originais, sem relicenciar a geometria de terceiros.
+
+[Guia de assets e reutilização](REUTILIZACAO.md) · [Licença MIT](LICENSE) · [Baixar ZIP sem conta](https://github.com/igormorais123/inteia-f1-loop/archive/refs/heads/main.zip)
+
 Aula interativa com carro de fórmula em 3D, monitor de análise no box, exploração do motor e encerramento na pista com créditos de cinema.
 
 **Professor:** Igor Morais Vasconcelos  
@@ -43,7 +49,7 @@ A pasta `dist/` contém o site estático. O arquivo `index.html` é gerado por `
 
 IAs creditadas na produção: Fable 5.1 e ChatGPT Astra Ultra. Tecnologias: Three.js, WebGL, JavaScript, Vite e postprocessing.
 
-Este repositório é público para consulta. A publicação não altera as permissões dos materiais: preserve as atribuições e consulte `public/assets/INTEIA-LICENSE.txt`, os avisos de terceiros e as licenças das fontes em `public/fonts/` antes de reutilizar ou adaptar. Os avisos de terceiros importados podem mencionar caminhos do projeto de origem; não representam uma nova concessão de licença.
+Código e contribuições originais: [MIT](LICENSE). Consulte o [guia de reutilização](REUTILIZACAO.md) para arquivos, exemplos e materiais de terceiros.
 
 ## Privacidade
 
