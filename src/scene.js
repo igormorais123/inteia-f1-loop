@@ -16,6 +16,7 @@ import {createDust} from './fx/dust.js';
 import {createHighlight} from './fx/highlight.js';
 import {enhanceCar} from './fx/car-look.js';
 import {createSurfaceLibrary} from './fx/surface-library.js';
+import {loadCyclesFinish} from './fx/cycles-finish.js';
 import {createChoreo} from './fx/choreo.js';
 import {createGarage} from './world/garage.js';
 import {createTunnel} from './world/tunnel.js';
@@ -82,9 +83,9 @@ export async function createScene(stage, {onProgress, onError, signal}) {
   renderer.domElement.addEventListener('webglcontextlost', e => { e.preventDefault(); onError(); });
 
   // Warm key against a cold world (R10); the environment map supplies the softboxes.
-  const warmKey = new THREE.Color('#ffcf9e'), coldKey = new THREE.Color('#dcecff');
+  const warmKey = new THREE.Color('#fff1e5'), coldKey = new THREE.Color('#dcecff');
   // Hot subject, cold world: the box rim is amber and only the tunnel turns it cyan.
-  const warmRim = new THREE.Color('#ffa24a'), coldRim = new THREE.Color('#4fd6ff');
+  const warmRim = new THREE.Color('#e0eaff'), coldRim = new THREE.Color('#4fd6ff');
   const key = new THREE.DirectionalLight(warmKey, 3);
   key.position.set(4.5, 7, -2.5);
   key.castShadow = true;
@@ -193,7 +194,8 @@ export async function createScene(stage, {onProgress, onError, signal}) {
   const tunnelLights = [], tunnelLightBase = [];
   tunnel?.root.traverse(o => { if (o.isLight) { tunnelLights.push(o); tunnelLightBase.push(o.intensity); } });
   const pmrem = new THREE.PMREMGenerator(renderer);
-  const envGarage = pmrem.fromScene(garage.envScene, .02);
+  const cyclesFinish = await loadCyclesFinish({renderer,model,mobile,base:import.meta.env.BASE_URL+'assets/'});
+  const envGarage = cyclesFinish.environment;
   const envTunnel = pmrem.fromScene(tunnel.envScene, .02);
   pmrem.dispose();
   scene.environment = envGarage.texture;
@@ -204,7 +206,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
 
   const target = new THREE.Vector3(), focus = new THREE.Vector3(), offset = new THREE.Vector3(), side = new THREE.Vector3(), point = new THREE.Vector3(), buffer = new THREE.Vector2();
   const pointer = {x: 0, y: 0, sx: 0, sy: 0}, lastCamera = new THREE.Vector3();
-  const gradeGarage = [[.9, .99, 1.07], [1.06, 1, .92]], gradeTunnel = [[.84, 1, 1.14], [.97, 1.02, 1.07]], gradeDebrief = [[.97, .92, 1.02], [1.05, .98, .93]], gradeTrack = [[.86, 1, 1.12], [1.05, 1, .93]];
+  const gradeGarage = [[.94, .98, 1.03], [1.01, 1, .98]], gradeTunnel = [[.84, 1, 1.14], [.97, 1.02, 1.07]], gradeDebrief = [[.97, .92, 1.02], [1.05, .98, .93]], gradeTrack = [[.86, 1, 1.12], [1.05, 1, .93]];
   const dustWarm = new THREE.Color('#ffd9b8'), dustCold = new THREE.Color('#bfe9ff'), dustColor = new THREE.Color();
   const fogBase = new THREE.Color(FOG), fogHaze = new THREE.Color('#0a1218');
   let pose = null, width = 1, height = 1;
@@ -350,13 +352,13 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     tunnel?.update(dt, camera, time);
 
     key.color.lerpColors(warmKey, coldKey, Math.max(t, r));
-    key.intensity = (3.1 - .8 * t) * (1 - .6 * d) * (1 - .65 * v) * (1 - .2 * fix) * e;
+    key.intensity = (1.65 + .65 * t) * (1 - .6 * d) * (1 - .65 * v) * (1 - .2 * fix) * e;
     rim.color.lerpColors(warmRim, coldRim, t);
     // Steep amber rim also lands on the floor: kept low in the box, the edge line comes from the coat.
     rim.intensity = (1.1 + 2.4 * t + .4 * d) * (1 - .4 * fix) * e;
     front.intensity = .3 * (1 - .8 * d) * (1 - .7 * v) * (1 - .6 * fix) * e;
     hemi.intensity = .28 * (1 - .5 * v) * (1 - .6 * fix) * (1 - .5 * d) * e;
-    kicker.intensity = 1.4 * (1 - t) * (1 + .6 * d) * e;
+    kicker.intensity = .5 * (1 - t) * (1 + .6 * d) * e;
     scene.environmentIntensity = (.9 + .15 * t) * (1 - .35 * d) * (1 - .4 * v) * (1 - .3 * fix) * e;
     // Track (levels from the track lab): a cold, lower key; the amber rim and kicker draw the edge
     // that the circuit's long light strips run along.
@@ -371,14 +373,14 @@ export async function createScene(stage, {onProgress, onError, signal}) {
     // engine cover and halo without landing on the floor; cyan and fainter in the tunnel.
     // In the close the edge light comes from beyond the subject (camera forward, lifted), wider and stronger.
     if (rearClose > 0) rimBack.subVectors(target, camera.position).normalize().setY(.9).normalize().lerp(rimEdge, 1 - rearClose);
-    carLook.setRim(rim.color, mix((2.4 - 1.6 * t) * (1 + .25 * d) * (1 + 3.5 * rearClose), 1.2, r) * e, rearClose > 0 ? rimBack : rimEdge, mix(.72, .32, rearClose));
+    carLook.setRim(rim.color, mix((.65 + .15 * t) * (1 + .25 * d) * (1 + 3.5 * rearClose), 1.2, r) * e, rearClose > 0 ? rimBack : rimEdge, mix(.72, .32, rearClose));
     // Out early in the wipe: at half weight the cyan point light still lit the floor edge on the track.
     for (let i = 0; i < tunnelLights.length; i++) tunnelLights[i].intensity = tunnelLightBase[i] * (1 - smooth(r / .3));
     const g = t > 0 ? [0, 1].map(k => gradeGarage[k].map((v, i) => mix(v, gradeTunnel[k][i], t))) : gradeGarage.map((row, k) => row.map((v, i) => mix(v, gradeDebrief[k][i], d)));
     if (r > 0) for (let k = 0; k < 2; k++) for (let i = 0; i < 3; i++) g[k][i] = mix(g[k][i], gradeTrack[k][i], r);
     post.setGrade(g[0], g[1], 1);
     // Chapter 07: the work light mirrors on the piston crowns and bloom turned them into white halos; the bay needs none.
-    post.setBloom(mix(mix(mix(.5 + .35 * t + .3 * d, .62, r),.12,dedicated),.18,engineZoom));
+    post.setBloom(mix(mix(mix(.22 + .35 * t + .3 * d, .62, r),.12,dedicated),.18,engineZoom));
     post.setSpeed(run, run * .7);
     post.setBand(pose.incoming ? pose.wipe : 0, time);
     focus.fromArray(pose.focus);
@@ -483,7 +485,7 @@ export async function createScene(stage, {onProgress, onError, signal}) {
       if (!stage.dataset.loaded) { stage.dataset.loaded = 'true'; stage.classList.add('loaded'); }
       adapt(time * 1000, budgetMs);
     },
-    dispose() { internals.dispose(); driver.dispose();finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); envGarage.dispose(); envTunnel.dispose(); renderer.dispose(); },
+    dispose() { internals.dispose(); driver.dispose();finishLine.dispose();inCarEngine.dispose();post.dispose(); dust.dispose(); floor.dispose(); carLook.dispose(); surfaceLibrary.dispose(); carMaterials.dispose(); garage?.dispose(); tunnel?.dispose(); track.dispose(); wheelBlur.dispose(); sparks.dispose(); cyclesFinish.dispose(); envTunnel.dispose(); renderer.dispose(); },
   };
 }
 

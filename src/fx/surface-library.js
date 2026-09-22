@@ -75,13 +75,22 @@ export function createSurfaceLibrary(THREE, {renderer, mobile = false} = {}) {
   material.normalScale.setScalar(kind==='carbon'?.32:kind==='rubber'?.18:.12);
   if(kind==='carbon'){
    material.map=transformed(surface.color,repeat);material.color.set('#ffffff');material.roughness=.57;material.metalness=.04;
-   if(material.isMeshPhysicalMaterial){material.clearcoat=.28;material.clearcoatRoughness=.25;}
+   if(material.isMeshPhysicalMaterial){material.clearcoat=.42;material.clearcoatRoughness=.20;}
    // The lab shader reads raw triplanar UVs, bypassing Texture.repeat.
    const previous=material.onBeforeCompile,cache=material.customProgramCacheKey();
    if(cache.includes('carbon-local-triplanar')){
     material.normalMap=null;
-    material.onBeforeCompile=function(shader,...args){previous.call(this,shader,...args);shader.fragmentShader=shader.fragmentShader.replace('vec3 p = vCarbonPosition * 3.0;',`vec3 p = vCarbonPosition * ${(1/surface.tileMeters).toFixed(6)};`);};
-    material.customProgramCacheKey=()=>cache+'-physical-twill-24mm';
+    material.bumpMap=material.map;material.bumpScale=.0012;
+    material.onBeforeCompile=function(shader,...args){
+     previous.call(this,shader,...args);
+     shader.fragmentShader=shader.fragmentShader.replace('vec3 p = vCarbonPosition * 3.0;',`vec3 p = vCarbonPosition * ${(1/surface.tileMeters).toFixed(6)};`)
+      .replace('#include <normal_fragment_maps>', `
+#ifdef USE_BUMPMAP
+ float fiberHeight=sampleCarbonSurface(map).g;
+ normal=perturbNormalArb(-vViewPosition,normal,vec2(dFdx(fiberHeight),dFdy(fiberHeight))*bumpScale,faceDirection);
+#endif`);
+    };
+    material.customProgramCacheKey=()=>cache+'-physical-twill-relief-v2';
    }
   }else if(kind==='rubber'){
    material.map=null;material.color.set('#202124');material.metalness=0;material.roughness=.85;

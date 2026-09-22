@@ -207,13 +207,13 @@ export function enhanceCar({model, mechanics, mobile}) {
   for (const m of materials.values()) {
     if (!m.name.toLowerCase().startsWith('pintura') || !m.isMeshPhysicalMaterial) continue;
     m.color.set(PAINT);
-    m.roughness = .42;
+    m.roughness = .30;
     m.metalness = 0;
     m.clearcoat = 1;
-    m.clearcoatRoughness = .065; // long strip reflections, soft enough to hide facet ripples
+    m.clearcoatRoughness = .10; // long strip reflections, soft enough to hide facet ripples
     m.ior = 1.5;
-    m.specularIntensity = .3;
-    m.envMapIntensity = 1.35;
+    m.specularIntensity = .5;
+    m.envMapIntensity = 1.05;
     paintShader(m);
     m.needsUpdate = true;
   }

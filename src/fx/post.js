@@ -105,10 +105,10 @@ export function createPost(renderer, scene, camera, {mobile}) {
   composer.addPass(new EffectPass(camera, ...(dof ? [dof, bloom] : [bloom])));
   const chroma = mobile ? null : new ChromaticAberrationEffect({offset: new Vector2(.0007, .0005), radialModulation: true, modulationOffset: .4});
   if (chroma) composer.addPass(new EffectPass(camera, chroma));
-  const tone = new ToneMappingEffect({mode: ToneMappingMode.AGX});
+  const tone = new ToneMappingEffect({mode: ToneMappingMode.ACES_FILMIC});
   const cinema = new CinemaEffect();
   const noise = new NoiseEffect({blendFunction: BlendFunction.SOFT_LIGHT, premultiply: false});
-  noise.blendMode.opacity.value = mobile ? .08 : .15;
+  noise.blendMode.opacity.value = mobile ? .015 : .025;
   const vignette = new VignetteEffect({offset: .22, darkness: mobile ? .6 : .8});
   composer.addPass(new EffectPass(camera, tone, cinema, noise, vignette));
   composer.addPass(new EffectPass(camera, new SMAAEffect({preset: mobile ? SMAAPreset.MEDIUM : SMAAPreset.HIGH})));
